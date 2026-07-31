@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Açaí Berry| Entrega Zori</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+    <style>
+        .product-card-with-img {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .prod-header-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .sizes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .sizes-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .size-btn {
+            background: #f8f4f9;
+            border: 1px solid #d8b4e2;
+            border-radius: 6px;
+            padding: 8px 4px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.2s ease;
+        }
+        .size-btn span.price {
+            color: #6a0da5;
+            font-weight: 700;
+        }
+        .size-btn:hover, .size-btn:active {
+            background: #edd8f5;
+            border-color: #6a0da5;
+        }
+        .aggregate-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            margin-bottom: 6px;
+        }
+        .aggregate-item .info {
+            display: flex;
+            flex-direction: column;
+        }
+        .aggregate-item span.price {
+            color: #6a0da5;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .agregado-btn {
+            background: #6a0da5;
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .agregado-btn:active {
+            background: #4a0875;
+        }
+        /* Estilos del Carrito Flotante */
+        .cart-float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #6a0da5;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(106, 13, 165, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .cart-float-btn:active {
+            transform: scale(0.95);
+            background: #4a0875;
+        }
+        .cart-badge {
+            background: #ffcc00;
+            color: #333;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+        /* Modal del Carrito */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .cart-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .cart-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            max-height: 85vh;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+        }
+        .cart-modal.active .cart-content {
+            transform: translateY(0);
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+        .cart-header h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin: 0;
+        }
+        .cart-close {
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+        .cart-items-list {
+            overflow-y: auto;
+            flex-grow: 1;
+            max-height: 40vh;
+            margin-bottom: 15px;
+            padding-right: 5px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        .cart-item-price {
+            color: #6a0da5;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .qty-btn {
+            background: #f0f0f0;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        .qty-btn:active {
+            background: #ddd;
+        }
+        .cart-total-section {
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+        }
+        .cart-total-section span.amount {
+            color: #6a0da5;
+        }
+        .btn-enviar-pedido {
+            background: #25d366;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .btn-enviar-pedido:active {
+            background: #1ebc57;
+        }
+        .cart-empty {
+            text-align: center;
+            color: #888;
+            padding: 30px 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container">
+        </header>
+
+        <!-- Banner del Local -->
+        <section class="promo-banner">
+            <img src="Açaí berry.webp" alt="Banner de bayas de açaí">
+        </section>
+
+        <!-- CATEGORÍA: CAMADINHAS TRADICIONALES -->
+        <h2 class="section-title" id="sec-camadinhas">CAMADINHAS</h2>
+        <section class="products-grid-custom">
+            <!-- TRADICIONAL -->
+            <div class="product-card-with-img">
+                <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500" alt="Tradicional" class="prod-header-img">
+                <div class="prod-info">
+                    <h4>Tradicional</h4>
+                    <p>Açaí, leche en polvo, leche condensada, granola y banana.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Tradicional (240ml)', 15000)">240ml <span class="price">Gs. 15.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Tradicional (330ml)', 20000)">330ml <span class="price">Gs. 20.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Tradicional (440ml)', 25000)">440ml <span class="price">Gs. 25.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Tradicional (550ml)', 30000)">550ml <span class="price">Gs. 30.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- OREO -->
+            <div class="product-card-with-img">
+                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500" alt="Oreo" class="prod-header-img">
+                <div class="prod-info">
+                    <h4>Oreo</h4>
+                    <p>Açaí, leche en polvo, leche condensada, oreo y nutella.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Oreo (240ml)', 15000)">240ml <span class="price">Gs. 15.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Oreo (330ml)', 20000)">330ml <span class="price">Gs. 20.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Oreo (440ml)', 25000)">440ml <span class="price">Gs. 25.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Oreo (550ml)', 30000)">550ml <span class="price">Gs. 30.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- TRES LECHES -->
+            <div class="product-card-with-img">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500" alt="Tres Leches" class="prod-header-img">
+                <div class="prod-info">
+                    <h4>Tres Leches</h4>
+                    <p>Açaí, leche en polvo, leche condensada y dulce de leche.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Tres Leches (240ml)', 13000)">240ml <span class="price">Gs. 13.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Tres Leches (330ml)', 18000)">330ml <span class="price">Gs. 18.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Tres Leches (440ml)', 23000)">440ml <span class="price">Gs. 23.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Tres Leches (550ml)', 28000)">550ml <span class="price">Gs. 28.000</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍA: VARIACIONES DE AÇAÍ -->
+        <h2 class="section-title">Variedades de Açaí</h2>
+        <section class="products-grid-custom">
+            <!-- Açaí Blanco -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Açaí Blanco</h4>
+                    <p>Pasta de leche con cookies, dos agregados a elección.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Blanco (240ml)', 20000)">240ml <span class="price">Gs. 20.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Blanco (330ml)', 25000)">330ml <span class="price">Gs. 25.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Blanco (440ml)', 30000)">440ml <span class="price">Gs. 30.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Blanco (550ml)', 35000)">550ml <span class="price">Gs. 35.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Açaí Negro -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Açaí Negro</h4>
+                    <p>Pasta de brownie con cookies y castaña de cajú, más dos agregados.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Black (240ml)', 18000)">240ml <span class="price">Gs. 18.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Black (330ml)', 23000)">330ml <span class="price">Gs. 23.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Black (440ml)', 28000)">440ml <span class="price">Gs. 28.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Black (550ml)', 33000)">550ml <span class="price">Gs. 33.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Verde de açaí -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Açaí Verde</h4>
+                    <p>Pasta de pistacho, más dos agregados.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Green (240ml)', 20000)">240ml <span class="price">Gs. 20.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Green (330ml)', 25000)">330ml <span class="price">Gs. 25.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Green (440ml)', 30000)">440ml <span class="price">Gs. 30.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Green (550ml)', 35000)">550ml <span class="price">Gs. 35.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fruta de açaí -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Fruta de açaí <small style="font-size:0.75rem; color:#888;">(Solo en temporada)</small></h4>
+                    <p>Banana, kiwi, durazno y frutilla.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Fruit (330ml)', 20000)">330ml <span class="price">Gs. 20.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Fruit (440ml)', 25000)">440ml <span class="price">Gs. 25.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Açaí Dubai -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Açaí Dubai</h4>
+                    <p>Pistacho, kataifi, bañado de chocolate y açaí.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Dubai (330ml)', 30000)">330ml <span class="price">Gs. 30.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Dubai (440ml)', 35000)">440ml <span class="price">Gs. 35.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- HELADO + AÇAÍ -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Helado + Açaí</h4>
+                    <p>Combinación deliciosa de helado suave con açaí.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Helado + Açaí (330ml)', 20000)">330ml <span class="price">Gs. 20.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Helado + Açaí (440ml)', 25000)">440ml <span class="price">Gs. 25.000</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍA: TRUFADOS Y 1KG -->
+        <h2 class="section-title">TRUFADOS Y PRESENTACIONES 1KG</h2>
+        <section class="products-grid-custom">
+            <!-- Açaí Avellana Trufado -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Açaí Trufado Avellana</h4>
+                    <p>Más dos agregados a elección.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Trufado Avellana (330ml)', 25000)">330ml <span class="price">Gs. 25.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Trufado Avellana (440ml)', 30000)">440ml <span class="price">Gs. 30.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Açaí Trufado con Leche -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Açaí Trufado Leitinho</h4>
+                    <p>Más dos agregados a elección.</p>
+                    <div class="sizes-grid">
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Trufado Leitinho (330ml)', 25000)">330ml <span class="price">Gs. 25.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Açaí Trufado Leitinho (440ml)', 30000)">440ml <span class="price">Gs. 30.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- CAPA DE 1 KG -->
+            <div class="product-card-with-img">
+                <div class="prod-info">
+                    <h4>Capa de Açaí 1 Kg</h4>
+                    <p>¡Disfruta de la mejor camadinha de Açaí en tamaño familiar!</p>
+                    <div class="sizes-grid-3">
+                        <div class="size-btn" onclick="agregarAlCarrito('Pure Açaí (1kg)', 65000)">Pure <span class="price">Gs. 65.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Traditional Layer (1kg)', 70000)">Traditional <span class="price">Gs. 70.000</span></div>
+                        <div class="size-btn" onclick="agregarAlCarrito('Camadinha Oreo (1kg)', 70000)">Oreo <span class="price">Gs. 70.000</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tazón de açaí -->
+            <div class="product-card-with-img">
+                <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500" alt="Tazón de açaí" class="prod-header-img">
+                <div class="prod-info">
+                    <h4>Tazón de açaí</h4>
+                    <p>Incluye +4 agregados a elección.</p>
+                    <span class="prod-price" style="font-size: 1.2rem; font-weight: 700; color: #6a0da5; display: block; margin: 8px 0;">Gs. 25.000</span>
+                    <button class="btn-pedir" style="width: 100%; padding: 10px; background: #6a0da5; color: #fff; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;" onclick="agregarAlCarrito('Açaí Bowl (+4 agregados)', 25000)">PEDIR BOWL</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍA: POSTRES Y HELADOS -->
+        <h2 class="section-title">POSTRES Y HELADOS</h2>
+        <section class="products-grid">
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Gran poste</h4>
+                    <span class="prod-price">Gs. 16.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Paletto Grande', 16000)">PEDIR</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Franuí</h4>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Franuí', 45000)">PEDIR</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Helado Artesanal (cada 100gr)</h4>
+                    <span class="prod-price">Gs. 6.500</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Helado Artesanal (100gr)', 6500)">PEDIR</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍA: AGREGADOS EXTRAS -->
+        <h2 class="section-title">AGREGADOS EXTRAS</h2>
+        <section style="margin-bottom: 25px;">
+            <div class="aggregate-item"><div class="info"><strong>Plátano</strong><span class="price">Gs. 4.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Plátano Extra', 4000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Kiwi</strong><span class="price">Gs. 5.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Kiwi Extra', 5000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Durazno</strong><span class="price">Gs. 5.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Durazno', 5000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Granola</strong><span class="price">Gs. 4.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Granola Extra', 4000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Cereal Mixto</strong><span class="price">Gs. 4.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Mix Cereal', 4000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Maní Triturado</strong><span class="price">Gs. 3.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Maní Triturado', 3000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Cohetes</strong><span class="price">Gs. 4.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Cohetes Extra', 4000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Leche en Polvo</strong><span class="price">Gs. 3.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Leche en Polvo', 3000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Leche Condensada</strong><span class="price">Gs. 3.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Leche Condensada', 3000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Oreo</strong><span class="price">Gs. 5.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Oreo', 5000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Dulce de Leche</strong><span class="price">Gs. 5.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Dulce de Leche', 5000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Bañado de Chocolate</strong><span class="price">Gs. 5.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Bañado de Chocolate', 5000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Nutella</strong><span class="price">Gs. 5.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Nutella', 5000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Pasta de Pistacho</strong><span class="price">Gs. 10.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Pasta de Pistacho', 10000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Pasta de Leche con Cookies</strong><span class="price">Gs. 10.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Pasta de Leche c/ Cookies', 10000)">+ Pedir</button></div>
+            <div class="aggregate-item"><div class="info"><strong>Pasta Brownie/Cookies/Castaña</strong><span class="price">Gs. 10.000</span></div><button class="agregado-btn" onclick="agregarAlCarrito('Extra Pasta Brownie/Castaña', 10000)">+ Pedir</button></div>
+        </section>
+
+        <!-- Footer Minimalista -->
+        <footer class="social-footer">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/acaiiberry_" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/595975737860" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="scalat-credits">
+                Desarrollado por <span>Scalat</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- BOTÓN FLOTANTE DEL CARRITO -->
+    <button class="cart-float-btn" onclick="abrirCarrito()">
+        <i class="fa-solid fa-cart-shopping"></i> Ver Carrito
+        <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+
+    <!-- MODAL DEL CARRITO -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Carrito - Açaí Berry</h3>
+                <button class="cart-close" onclick="cerrarCarrito()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="cart-items-list" id="cartItemsList">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div class="cart-total-section">
+                <span>Total:</span>
+                <span class="amount" id="cartTotalAmount">Gs. 0</span>
+            </div>
+            <button class="btn-enviar-pedido" onclick="enviarPedidoWhatsApp()">
+                Enviar pedido vía WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let carrito = [];
+
+        function agregarAlCarrito(nombre, precio) {
+            const index = carrito.findIndex(item => item.nombre === nombre);
+            if (index !== -1) {
+                carrito[index].cantidad += 1;
+            } else {
+                carrito.push({ nombre: nombre, precio: precio, cantidad: 1 });
+            }
+            actualizarCarritoUI();
+            
+            // Efecto visual rápido en el badge o botón flotante
+            const badge = document.getElementById('cartBadge');
+            badge.style.transform = 'scale(1.3)';
+            setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
+        }
+
+        function cambiarCantidad(index, cambio) {
+            carrito[index].cantidad += cambio;
+            if (carrito[index].cantidad <= 0) {
+                carrito.splice(index, 1);
+            }
+            actualizarCarritoUI();
+        }
+
+        function actualizarCarritoUI() {
+            const badge = document.getElementById('cartBadge');
+            const lista = document.getElementById('cartItemsList');
+            const totalAmount = document.getElementById('cartTotalAmount');
+            let totalItems = 0;
+            let totalPrecio = 0;
+
+            if (carrito.length === 0) {
+                lista.innerHTML = `<div class="cart-empty"><i class="fa-solid fa-basket-shopping" style="font-size: 2rem; margin-bottom: 8px; color: #ccc;"></i><br>Tu carrito está vacío</div>`;
+            } else {
+                lista.innerHTML = '';
+                carrito.forEach((item, index) => {
+                    totalItems += item.cantidad;
+                    let subtotal = item.precio * item.cantidad;
+                    totalPrecio += subtotal;
+                    lista.innerHTML += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <span class="cart-item-title">${item.nombre}</span>
+                                <span class="cart-item-price">Gs. ${subtotal.toLocaleString('es-PY')}</span>
+                            </div>
+                            <div class="cart-item-controls">
+                                <button class="qty-btn" onclick="cambiarCantidad(${index}, -1)">-</button>
+                                <span style="font-weight: 600; font-size: 0.9rem; min-width: 20px; text-align: center;">${item.cantidad}</span>
+                                <button class="qty-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            badge.innerText = totalItems;
+            totalAmount.innerText = `Gs. ${totalPrecio.toLocaleString('es-PY')}`;
+        }
+
+        function abrirCarrito() {
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function cerrarCarrito() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function enviarPedidoWhatsApp() {
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío. Agregá productos antes de enviar el pedido.");
+                return;
+            }
+            const whatsappNumber = "595975737860"; 
+            let mensaje = `NUEVO PEDIDO ZORI\n\n`;
+            mensaje += `Local: AÇAÍ BERRY\n\n`;
+            mensaje += `(Lista de productos generada automáticamente desde el carrito)\n\n`;
+            
+            let totalPrecio = 0;
+            carrito.forEach(item => {
+                let subtotal = item.precio * item.cantidad;
+                totalPrecio += subtotal;
+                mensaje += `• ${item.cantidad}x ${item.nombre} - Gs. ${subtotal.toLocaleString('es-PY')}\n`;
+            });
+            
+            mensaje += `\nTotal: Gs. ${totalPrecio.toLocaleString('es-PY')}\n\n`;
+            mensaje += `Nombre:\n`;
+            mensaje += `Ubicación:\n`;
+            mensaje += `Pago:\n`;
+
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

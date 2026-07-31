@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bacoa Burger | Zori Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+    <style>
+        /* Estilos del Carrito Flotante */
+        .cart-float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #6a0da5;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(106, 13, 165, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .cart-float-btn:active {
+            transform: scale(0.95);
+            background: #4a0875;
+        }
+        .cart-badge {
+            background: #ffcc00;
+            color: #333;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+        /* Modal del Carrito */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .cart-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .cart-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            max-height: 85vh;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+        }
+        .cart-modal.active .cart-content {
+            transform: translateY(0);
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+        .cart-header h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin: 0;
+        }
+        .cart-close {
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+        .cart-items-list {
+            overflow-y: auto;
+            flex-grow: 1;
+            max-height: 40vh;
+            margin-bottom: 15px;
+            padding-right: 5px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        .cart-item-price {
+            color: #6a0da5;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .qty-btn {
+            background: #f0f0f0;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        .qty-btn:active {
+            background: #ddd;
+        }
+        .cart-total-section {
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+        }
+        .cart-total-section span.amount {
+            color: #6a0da5;
+        }
+        .btn-enviar-pedido {
+            background: #25d366;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .btn-enviar-pedido:active {
+            background: #1ebc57;
+        }
+        .cart-empty {
+            text-align: center;
+            color: #888;
+            padding: 30px 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container">
+        </header>
+
+        <!-- Banner del Local -->
+        <section class="promo-banner">
+            <img src="bacoa.webp" alt="Banner Bacoa Burger">
+        </section>
+
+        <!-- CATEGORÍA: HAMBURGUESAS -->
+        <h2 class="section-title" id="sec-hamburguesas">HAMBURGUESAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Carnívora</h4>
+                    <p>Pan artesanal, triple carne, panceta, cebolla morada, locote rojo, mozzarella y cheddar.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburguesa Carnívora', 30000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>De la Casa</h4>
+                    <p>Pan artesanal, doble carne, mozzarella, cheddar, tomate, lechuga, cebolla morada y salsa barbacoa.</p>
+                    <span class="prod-price">Gs. 26.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburguesa De la Casa', 26000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Completa</h4>
+                    <p>Pan artesanal, medallón de carne de 130gr., mozzarella, panceta, tomate, lechuga, cebolla morada, mayonesa y salsa de ajo.</p>
+                    <span class="prod-price">Gs. 24.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburguesa Completa', 24000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Simple</h4>
+                    <p>Pan artesanal, carne, lechuga, tomate, huevo, jamón, queso y salsa de ajo.</p>
+                    <span class="prod-price">Gs. 22.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburguesa Simple', 22000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Cheddar</h4>
+                    <p>Pan artesanal, medallón de carne, panceta, doble cheddar, mayonesa y salsa de ajo.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburguesa Cheddar', 20000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Barbacoa</h4>
+                    <p>Pan artesanal, medallón de carne, pepinillo, salsa barbacoa, queso y salsa de ajo.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburguesa Barbacoa', 20000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Hambur Kids</h4>
+                    <p>Pan artesanal, carne de 100 gr. y doble cheddar.</p>
+                    <span class="prod-price">Gs. 16.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hambur Kids', 16000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Hamburpizza</h4>
+                    <p>Pan baguette, doble carne, pepperoni, mozzarella, jamón, lechuga, huevo, tomate, mayonesa, orégano y salsa p/ pizza.</p>
+                    <span class="prod-price">Gs. 37.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburpizza', 37000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Doble Carne</h4>
+                    <p>Doble carne, doble cheddar, cebolla morada, panceta y mayonesa.</p>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburguesa Doble Carne', 25000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Oklahoma</h4>
+                    <p>Doble carne, salsa barbacoa, cebolla, doble cheddar, panceta y pepinillo.</p>
+                    <span class="prod-price">Gs. 26.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Hamburguesa Oklahoma', 26000)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: LOMITOS Y SÁNDWICHES -->
+        <h2 class="section-title">LOMITOS Y SÁNDWICHES</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Sándwich de Lomito</h4>
+                    <p>Pan artesanal, carne de lomito, huevo, lechuga, tomate, queso, jamón y salsa de ajo.</p>
+                    <span class="prod-price">Gs. 22.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Sándwich de Lomito', 22000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Sándwich de Picaña</h4>
+                    <p>Pan baguette, carne de picaña, doble queso, tomate, lechuga y salsa de ajo.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Sándwich de Picaña', 40000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Especial</h4>
+                    <p>Pan baguette, carne picada, locote rojo, cebolla morada, cheddar, mozzarella, mostaza-mayonesa y picante.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Sándwich Especial', 35000)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: ESPECIALIDADES DE PICAÑA -->
+        <h2 class="section-title">ESPECIALIDADES DE PICAÑA</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Picada de Picaña Personal</h4>
+                    <p>Carne de picaña, papas fritas y chorizo.</p>
+                    <div style="margin: 8px 0; display:flex; flex-direction:column; gap:4px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:0.85rem; color:#555;">Opción 1</span>
+                            <span class="prod-price">Gs. 70.000</span>
+                            <button class="btn-pedir" style="padding:4px 10px; font-size:0.8rem;" onclick="agregarAlCarrito('Picada de Picaña Personal (Opción 1)', 70000)">PEDIR</button>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:0.85rem; color:#555;">Opción 2</span>
+                            <span class="prod-price">Gs. 90.000</span>
+                            <button class="btn-pedir" style="padding:4px 10px; font-size:0.8rem;" onclick="agregarAlCarrito('Picada de Picaña Personal (Opción 2)', 90000)">PEDIR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Picaña al Plato</h4>
+                    <p>Filete de picaña, cebolla, tomate y lechuga.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Picaña al Plato', 40000)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PAPAS Y ACOMPAÑAMIENTOS -->
+        <h2 class="section-title">PAPAS Y ACOMPAÑAMIENTOS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Papa Frita Simple</h4>
+                    <div style="margin: 8px 0; display:flex; flex-direction:column; gap:4px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:0.85rem; color:#555;">Porción Chica</span>
+                            <span class="prod-price">Gs. 13.000</span>
+                            <button class="btn-pedir" style="padding:4px 10px; font-size:0.8rem;" onclick="agregarAlCarrito('Papa Frita Simple (Chica)', 13000)">PEDIR</button>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:0.85rem; color:#555;">Porción Grande</span>
+                            <span class="prod-price">Gs. 20.000</span>
+                            <button class="btn-pedir" style="padding:4px 10px; font-size:0.8rem;" onclick="agregarAlCarrito('Papa Frita Simple (Grande)', 20000)">PEDIR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Papa Frita con Cheddar y Panceta</h4>
+                    <span class="prod-price">Gs. 23.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Papa Frita con Cheddar y Panceta', 23000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Papas Bacoa</h4>
+                    <p>Papas fritas, mozzarella, cheddar, carne, locote rojo y cebolla morada.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Papas Bacoa', 35000)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Salchipapas</h4>
+                    <p>Papas fritas, rodajas de pancho y cheddar.</p>
+                    <span class="prod-price">Gs. 23.000</span>
+                    <button class="btn-pedir" onclick="agregarAlCarrito('Salchipapas', 23000)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: AGREGADOS -->
+        <h2 class="section-title">AGREGADOS</h2>
+        <section class="products-grid">
+            <div class="product-card"><div class="prod-info"><h4>Huevo</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Huevo', 4000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Pepinillo</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Pepinillo', 4000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Cebolla Morada</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Cebolla Morada', 4000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Locote Rojo</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Locote Rojo', 4000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Cheddar</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Cheddar', 4000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Mozzarella</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Mozzarella', 4000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Jamón</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Jamón', 4000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Panceta</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Panceta', 4000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Salsas</h4><span class="prod-price">Gs. 4.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Salsas', 4000)">PEDIR</button></div></div>
+        </section>
+
+        <!-- CATEGORÍA: BEBIDAS -->
+        <h2 class="section-title">BEBIDAS</h2>
+        <section class="products-grid">
+            <div class="product-card"><div class="prod-info"><h4>Coca Cola 1.5L</h4><span class="prod-price">Gs. 12.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Coca Cola 1.5L', 12000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Coca Cola 1L</h4><span class="prod-price">Gs. 9.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Coca Cola 1L', 9000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Coca Cola 500ML</h4><span class="prod-price">Gs. 8.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Coca Cola 500ML', 8000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Coca Cola Lata</h4><span class="prod-price">Gs. 8.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Coca Cola Lata', 8000)">PEDIR</button></div></div>
+        </section>
+
+        <!-- CATEGORÍA: CERVEZAS Y TRAGOS -->
+        <h2 class="section-title">CERVEZAS Y TRAGOS</h2>
+        <section class="products-grid">
+            <div class="product-card"><div class="prod-info"><h4>Heineken 650ml</h4><span class="prod-price">Gs. 18.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Heineken 650ml', 18000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Miller 600ml</h4><span class="prod-price">Gs. 17.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Miller 600ml', 17000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Stella Artois 600ml</h4><span class="prod-price">Gs. 17.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Stella Artois 600ml', 17000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Corona 710ml</h4><span class="prod-price">Gs. 18.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Corona 710ml', 18000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Caipiriña 700ml</h4><span class="prod-price">Gs. 20.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Caipiriña 700ml', 20000)">PEDIR</button></div></div>
+            <div class="product-card"><div class="prod-info"><h4>Fernet</h4><span class="prod-price">Gs. 20.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Fernet', 20000)">PEDIR</button></div></div>
+        </section>
+
+        <!-- Footer Minimalista -->
+        <footer class="social-footer">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="scalat-credits">
+                Desarrollado por <span>Scalat</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- BOTÓN FLOTANTE DEL CARRITO -->
+    <button class="cart-float-btn" onclick="abrirCarrito()">
+        <i class="fa-solid fa-cart-shopping"></i> Ver Carrito
+        <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+
+    <!-- MODAL DEL CARRITO -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Carrito - Bacoa Burger</h3>
+                <button class="cart-close" onclick="cerrarCarrito()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="cart-items-list" id="cartItemsList">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div class="cart-total-section">
+                <span>Total:</span>
+                <span class="amount" id="cartTotalAmount">Gs. 0</span>
+            </div>
+            <button class="btn-enviar-pedido" onclick="enviarPedidoWhatsApp()">
+                Enviar pedido vía WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let carrito = [];
+
+        function agregarAlCarrito(nombre, precio) {
+            const index = carrito.findIndex(item => item.nombre === nombre);
+            if (index !== -1) {
+                carrito[index].cantidad += 1;
+            } else {
+                carrito.push({ nombre: nombre, precio: precio, cantidad: 1 });
+            }
+            actualizarCarritoUI();
+            
+            const badge = document.getElementById('cartBadge');
+            badge.style.transform = 'scale(1.3)';
+            setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
+        }
+
+        function cambiarCantidad(index, cambio) {
+            carrito[index].cantidad += cambio;
+            if (carrito[index].cantidad <= 0) {
+                carrito.splice(index, 1);
+            }
+            actualizarCarritoUI();
+        }
+
+        function actualizarCarritoUI() {
+            const badge = document.getElementById('cartBadge');
+            const lista = document.getElementById('cartItemsList');
+            const totalAmount = document.getElementById('cartTotalAmount');
+            let totalItems = 0;
+            let totalPrecio = 0;
+
+            if (carrito.length === 0) {
+                lista.innerHTML = `<div class="cart-empty"><i class="fa-solid fa-basket-shopping" style="font-size: 2rem; margin-bottom: 8px; color: #ccc;"></i><br>Tu carrito está vacío</div>`;
+            } else {
+                lista.innerHTML = '';
+                carrito.forEach((item, index) => {
+                    totalItems += item.cantidad;
+                    let subtotal = item.precio * item.cantidad;
+                    totalPrecio += subtotal;
+                    lista.innerHTML += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <span class="cart-item-title">${item.nombre}</span>
+                                <span class="cart-item-price">Gs. ${subtotal.toLocaleString('es-PY')}</span>
+                            </div>
+                            <div class="cart-item-controls">
+                                <button class="qty-btn" onclick="cambiarCantidad(${index}, -1)">-</button>
+                                <span style="font-weight: 600; font-size: 0.9rem; min-width: 20px; text-align: center;">${item.cantidad}</span>
+                                <button class="qty-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            badge.innerText = totalItems;
+            totalAmount.innerText = `Gs. ${totalPrecio.toLocaleString('es-PY')}`;
+        }
+
+        function abrirCarrito() {
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function cerrarCarrito() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function enviarPedidoWhatsApp() {
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío. Agregá productos antes de enviar el pedido.");
+                return;
+            }
+            const whatsappZori = "595982309464"; 
+            let mensaje = `NUEVO PEDIDO ZORI\n\n`;
+            mensaje += `Local: BACOA BURGER\n\n`;
+            mensaje += `(Lista de productos generada automáticamente desde el carrito)\n\n`;
+            
+            let totalPrecio = 0;
+            carrito.forEach(item => {
+                let subtotal = item.precio * item.cantidad;
+                totalPrecio += subtotal;
+                mensaje += `• ${item.cantidad}x ${item.nombre} - Gs. ${subtotal.toLocaleString('es-PY')}\n`;
+            });
+            
+            mensaje += `\nTotal: Gs. ${totalPrecio.toLocaleString('es-PY')}\n\n`;
+            mensaje += `Nombre:\n`;
+            mensaje += `Ubicación:\n`;
+            mensaje += `Pago:\n`;
+
+            const url = `https://wa.me/${whatsappZori}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

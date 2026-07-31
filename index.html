@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Zori Delivery | Locales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+    <style>
+        /* Estilos del Carrusel con línea superior naranja */
+        .carousel-section {
+            width: 100%;
+            background: #ffffff;
+            padding: 0;
+            overflow: hidden;
+            border-top: 10px solid #ff660000; /* Franja naranja arriba */
+            margin-bottom: 15px;
+        }
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+        /* Puntos indicadores del carrusel */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 0;
+            background: #fff;
+        }
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ccc;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .indicator.active {
+            background: #ff6600;
+            width: 20px;
+            border-radius: 4px;
+        }
+
+        /* Estilo especial para la tarjeta de "Agrega tu local" */
+        .store-card.add-store {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 2px dashed #ff6600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .store-card.add-store:hover {
+            transform: scale(1.02);
+        }
+        .store-card.add-store i {
+            font-size: 35px;
+            color: #ff6600;
+            margin-bottom: 8px;
+        }
+        .store-card.add-store h3 {
+            color: #d84315;
+            font-size: 15px;
+            margin: 0;
+        }
+        .store-card.add-store p {
+            font-size: 11px;
+            color: #555;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        
+        <!-- 1. Buscador de Locales (Arriba) -->
+        <section class="search-section" style="padding-top: 15px;">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Buscar local">
+            </div>
+        </section>
+
+        <!-- 2. Carrusel con franja naranja (Justo debajo del buscador) -->
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <img src="iamgen 1 carrusel.svg" alt="Banner 1 Zori">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Recurso 18-100.jpg" alt="Banner 2 Farmacia">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Recurso 19-100.jpg" alt="Banner 3 servicios">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="Recurso 20-100.jpg" alt="Banner 4 servicios">
+                    </div>
+                </div>
+            </div>
+            <!-- Indicadores -->
+            <div class="carousel-indicators" id="carouselIndicators">
+                <button class="indicator active" onclick="currentSlide(0)"></button>
+                <button class="indicator" onclick="currentSlide(1)"></button>
+                <button class="indicator" onclick="currentSlide(2)"></button>
+                <button class="indicator" onclick="currentSlide(3)"></button>
+                
+            </div>
+        </section>
+
+        <!-- Título -->
+        <h2 class="section-title">LOCALES DISPONIBLES</h2>
+
+        <!-- Grilla de Locales (Aquí se inyectan los locales + los botones de unirse) -->
+        <section class="stores-grid" id="stores-container">
+        </section>
+
+        <!-- Footer ultra minimalista con Instagram, WhatsApp y Sclat -->
+        <footer class="social-footer">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/595982309464" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+            <div class="scalat-credits">
+                Desarrollado por <span>Sclat</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Lógica del Carrusel Automático
+        let slideIndex = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function updateCarousel() {
+            if (!track) return;
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+            indicators.forEach((ind, i) => {
+                ind.classList.toggle('active', i === slideIndex);
+            });
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function currentSlide(index) {
+            slideIndex = index;
+            updateCarousel();
+        }
+
+        let carouselInterval = setInterval(nextSlide, 4000);
+
+        if (track) {
+            track.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+            track.addEventListener('mouseleave', () => carouselInterval = setInterval(nextSlide, 4000));
+        }
+
+        // Array de datos de los locales reales
+        const locales = [
+            { id: "burgerland", nombre: "Burgerland", img: "burgerland.webp", url: "burgerland.html" },
+            { id: "Valhalla Burger", nombre: "Valhalla Burger", img: "valhalla.webp", url: "Valhalla.html" },
+            { id: "Rolling Cook.html", nombre: "Rolling Cook", img: "rolling cook.webp", url: "Rolling Cook.html" },
+            { id: "Absoluto.html", nombre: "Absoluto", img: "absoluto.webp", url: "Absoluto.html" },
+            { id: "MIJAL", nombre: "MIJAL", img: "MIJAL.webp", url: "MIJAL.html" },
+            { id: "Acai berry", nombre: "Acai berry", img: "Açaí berry.webp", url: "Acai berry.html" },
+            { id: "Bacoa burger", nombre: "Bacoa burger", img: "bacoa.webp", url: "Bacoa burger.html" },
+            { id: "Los Abuelos", nombre: "los abuelos", img: "los abuelos logo.png", url: "los abuelos.html" },
+            
+        ];
+
+        const container = document.getElementById('stores-container');
+
+        function renderLocales(lista) {
+            container.innerHTML = '';
+            
+            // Renderizar los locales normales filtrados o totales
+            lista.forEach(local => {
+                container.innerHTML += `
+                    <div class="store-card" onclick="irAlMenu('${local.url}')">
+                        <img src="${local.img}" alt="${local.nombre}">
+                        <div class="store-info">
+                            <h3>${local.nombre}</h3>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Agregar las 4 tarjetas de "Agrega tu local" al final de la grilla
+            for (let i = 0; i < 4; i++) {
+                container.innerHTML += `
+                    <div class="store-card add-store" onclick="contactarWhatsApp()">
+                        <i class="fa-solid fa-store-slash"></i>
+                        <h3>¡Agrega tu local!</h3>
+                        <p>Únete a Zori Delivery</p>
+                    </div>
+                `;
+            }
+        }
+
+        function irAlMenu(urlArchivo) {
+            window.location.href = urlArchivo;
+        }
+
+        function contactarWhatsApp() {
+            let mensaje = "¡Hola Zori Delivery! 📱 Me interesa agregar mi local a la plataforma. ¿Me podrían dar info sobre cómo funciona?";
+            let urlWp = `https://wa.me/595982309464?text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWp, '_blank');
+        }
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const texto = e.target.value.toLowerCase();
+            const filtrados = locales.filter(l => 
+                l.nombre.toLowerCase().includes(texto)
+            );
+            renderLocales(filtrados);
+        });
+
+        // Inicializar renderizado
+        renderLocales(locales);
+    </script>
+</body>
+</html>
