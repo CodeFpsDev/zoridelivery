@@ -203,8 +203,9 @@
             { id: "Acai berry", nombre: "Acai berry", img: "Açaí berry.webp", url: "Acai berry.html" },
             { id: "Bacoa burger", nombre: "Bacoa burger", img: "bacoa.webp", url: "Bacoa burger.html" },
             { id: "Los Abuelos", nombre: "los abuelos", img: "los abuelos logo.png", url: "los abuelos.html" },
-            
-        ];
+            { id: "La Estancion", nombre: "La Estacion", img: "la estacion web.jpeg", url: "la estacion.html" }, 
+            { id: "Porkys", nombre: "Porkys", img: "porkis.png", url: "Porkys.html" }
+         ];
 
         const container = document.getElementById('stores-container');
 
@@ -223,8 +224,8 @@
                 `;
             });
 
-            // Agregar las 4 tarjetas de "Agrega tu local" al final de la grilla
-            for (let i = 0; i < 4; i++) {
+            // Agregar las 2 tarjetas de "Agrega tu local" al final de la grilla
+            for (let i = 0; i < 2; i++) {
                 container.innerHTML += `
                     <div class="store-card add-store" onclick="contactarWhatsApp()">
                         <i class="fa-solid fa-store-slash"></i>
