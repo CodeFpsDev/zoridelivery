@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Valhalla Burger | Zori Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container">
+            </div>
+        </header>
+
+        <!-- Banner del Local -->
+        <section class="promo-banner">
+            <img src="valhalla.webp" alt="Banner Valhalla">
+        </section>
+
+        <!-- CATEGORÍA: HAMBURGUESAS Y ÁRABES -->
+        <h2 class="section-title">HAMBURGUESAS Y ÁRABES</h2>
+        <section class="products-grid">
+            
+            <!-- KIDS BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Kids Burger</h4>
+                    <p>Pan gourmet, 120gr de carne casera, queso cheddar, salsa de la casa.</p>
+                    <span class="prod-price">Gs. 17.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Kids Burger', 17000, -1)">-</button>
+                        <span class="qty-count" id="qty-Kids-Burger">0</span>
+                        <button class="btn-qty" onclick="updateQty('Kids Burger', 17000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Kids Burger">
+            </div>
+
+            <!-- CUARTO DE LIBRA -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Cuarto de Libra</h4>
+                    <p>Pan gourmet, 120gr de carne casera, queso cheddar, panceta, cebolla caramelizada, salsa de la casa.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Cuarto de Libra', 20000, -1)">-</button>
+                        <span class="qty-count" id="qty-Cuarto-de-Libra">0</span>
+                        <button class="btn-qty" onclick="updateQty('Cuarto de Libra', 20000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=200" alt="Cuarto de Libra">
+            </div>
+
+            <!-- VALQUIRIA -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Valquiria</h4>
+                    <p>Pan gourmet, 120gr de carne casera, queso cheddar, panceta, cebolla caramelizada, tomate, lechuga, pimentón asado, salsa de la casa.</p>
+                    <span class="prod-price">Gs. 24.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Valquiria', 24000, -1)">-</button>
+                        <span class="qty-count" id="qty-Valquiria">0</span>
+                        <button class="btn-qty" onclick="updateQty('Valquiria', 24000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" alt="Valquiria">
+            </div>
+
+            <!-- BERSERKER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Berserker</h4>
+                    <p>Pan gourmet, doble carne casera de 120gr, doble queso cheddar, doble panceta, queso catupiry, cebolla caramelizada, salsa de la casa.</p>
+                    <span class="prod-price">Gs. 32.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Berserker', 32000, -1)">-</button>
+                        <span class="qty-count" id="qty-Berserker">0</span>
+                        <button class="btn-qty" onclick="updateQty('Berserker', 32000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200" alt="Berserker">
+            </div>
+
+            <!-- ARABURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Araburger</h4>
+                    <p>Pan árabe, carne de vacío 120gr, doble queso cheddar, queso catupiry, panceta, repollo, tomate y salsa de la casa.</p>
+                    <span class="prod-price">Gs. 28.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Araburger', 28000, -1)">-</button>
+                        <span class="qty-count" id="qty-Araburger">0</span>
+                        <button class="btn-qty" onclick="updateQty('Araburger', 28000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200" alt="Araburger">
+            </div>
+
+            <!-- GOLDEN BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Golden Burger</h4>
+                    <p>Pan gourmet, doble carne de 120gr, queso cheddar x4, salsa de la casa.</p>
+                    <span class="prod-price">Gs. 27.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Golden Burger', 27000, -1)">-</button>
+                        <span class="qty-count" id="qty-Golden-Burger">0</span>
+                        <button class="btn-qty" onclick="updateQty('Golden Burger', 27000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=200" alt="Golden Burger">
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PAPAS FRITAS -->
+        <h2 class="section-title">PAPAS FRITAS</h2>
+        <section class="products-grid">
+            
+            <!-- PAPAS PEQUEÑAS -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Papas Pequeñas</h4>
+                    <p>Porción individual de papas fritas, crujientes y doradas.</p>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Papas Pequeñas', 10000, -1)">-</button>
+                        <span class="qty-count" id="qty-Papas-Pequenas">0</span>
+                        <button class="btn-qty" onclick="updateQty('Papas Pequeñas', 10000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200" alt="Papas Pequeñas">
+            </div>
+
+            <!-- PAPAS MEDIANAS -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Papas Medianas</h4>
+                    <p>Porción mediana, ideal para acompañar tu menú de la parrilla.</p>
+                    <span class="prod-price">Gs. 15.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Papas Medianas', 15000, -1)">-</button>
+                        <span class="qty-count" id="qty-Papas-Medianas">0</span>
+                        <button class="btn-qty" onclick="updateQty('Papas Medianas', 15000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?w=200" alt="Papas Medianas">
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: AGREGADOS -->
+        <h2 class="section-title">AGREGADOS</h2>
+        <section class="products-grid">
+            
+            <!-- CARNE -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Agregado de Carne</h4>
+                    <span class="prod-price">Gs. 8.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado de Carne', 8000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado-de-Carne">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado de Carne', 8000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=200" alt="Extra Carne">
+            </div>
+
+            <!-- PANCETA -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Agregado de Panceta</h4>
+                    <span class="prod-price">Gs. 4.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado de Panceta', 4000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado-de-Panceta">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado de Panceta', 4000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1606851094655-b2593a9af63f?w=200" alt="Extra Panceta">
+            </div>
+
+            <!-- CHEDDAR -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Agregado de Cheddar</h4>
+                    <span class="prod-price">Gs. 3.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado de Cheddar', 3000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado-de-Cheddar">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado de Cheddar', 3000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1552763443-158947082db3?w=200" alt="Extra Cheddar">
+            </div>
+
+            <!-- PEPINILLO -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Agregado de Pepinillo</h4>
+                    <span class="prod-price">Gs. 3.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado de Pepinillo', 3000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado-de-Pepinillo">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado de Pepinillo', 3000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1604964432806-254d07c11f32?w=200" alt="Extra Pepinillo">
+            </div>
+
+            <!-- KATUPIRY -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Agregado de Katupiry</h4>
+                    <span class="prod-price">Gs. 3.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado de Katupiry', 3000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado-de-Katupiry">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado de Katupiry', 3000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1558818498-28c1e002b655?w=200" alt="Extra Katupiry">
+            </div>
+
+            <!-- HUEVO -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Agregado de Huevo</h4>
+                    <span class="prod-price">Gs. 2.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado de Huevo', 2000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado-de-Huevo">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado de Huevo', 2000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=200" alt="Extra Huevo">
+            </div>
+
+            <!-- CHOCLO -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Agregado de Choclo</h4>
+                    <span class="prod-price">Gs. 2.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado de Choclo', 2000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado-de-Choclo">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado de Choclo', 2000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=200" alt="Extra Choclo">
+            </div>
+
+        </section>
+
+        <!-- Footer Minimalista -->
+        <footer class="social-footer">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="scalat-credits">
+                Desarrollado por <span>Sclat</span>
+            </div>
+        </footer>
+    </div>
+    <!-- Script integrado directamente para descartar problemas de carga -->
+    <script src="js (1).js"></script>
+</body>
+</html>
