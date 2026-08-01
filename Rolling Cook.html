@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rolling Cook | Zori Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container">
+        </header>
+
+        <!-- Banner del Local -->
+        <section class="promo-banner">
+            <img src="rolling cook.webp" alt="Banner Rolling Cook">
+        </section>
+
+        <!-- CATEGORÍA: BURGER'S -->
+        <h2 class="section-title">BURGER'S</h2>
+        <section class="products-grid">
+            
+            <!-- CHESSE BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Chesse Burger</h4>
+                    <p>Pan Gourmet, 120 gr de carne, Queso cheddar, Mayo de la casa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 20.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Chesse Burger (Sola)', 20000, -1)">-</button>
+                            <span class="qty-count" id="qty-Chesse Burger (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Chesse Burger (Sola)', 20000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 35.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Chesse Burger (Combo)', 35000, -1)">-</button>
+                            <span class="qty-count" id="qty-Chesse Burger (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Chesse Burger (Combo)', 35000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Chesse Burger">
+            </div>
+
+            <!-- BBQ BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>BBQ Burger</h4>
+                    <p>Pan Gourmet, 120 gr de carne, Pepinillo, Queso cheddar, Bacon, Salsa barbacoa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 25.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('BBQ Burger (Sola)', 25000, -1)">-</button>
+                            <span class="qty-count" id="qty-BBQ Burger (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('BBQ Burger (Sola)', 25000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 40.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('BBQ Burger (Combo)', 40000, -1)">-</button>
+                            <span class="qty-count" id="qty-BBQ Burger (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('BBQ Burger (Combo)', 40000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589?w=200" alt="BBQ Burger">
+            </div>
+
+            <!-- CLASSIC BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Classic Burger</h4>
+                    <p>Pan gourmet, 120 gr de carne, Queso cheddar, Cebolla morada, Bacon, Salsa de la casa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 25.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Classic Burger (Sola)', 25000, -1)">-</button>
+                            <span class="qty-count" id="qty-Classic Burger (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Classic Burger (Sola)', 25000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 40.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Classic Burger (Combo)', 40000, -1)">-</button>
+                            <span class="qty-count" id="qty-Classic Burger (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Classic Burger (Combo)', 40000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=200" alt="Classic Burger">
+            </div>
+
+            <!-- BACON BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Bacon Burger</h4>
+                    <p>Pan Gourmet, Doble carne, Doble cheddar, Doble bacon, Salsa barbacoa, Salsa de la casa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 30.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Bacon Burger (Sola)', 30000, -1)">-</button>
+                            <span class="qty-count" id="qty-Bacon Burger (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Bacon Burger (Sola)', 30000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 46.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Bacon Burger (Combo)', 46000, -1)">-</button>
+                            <span class="qty-count" id="qty-Bacon Burger (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Bacon Burger (Combo)', 46000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" alt="Bacon Burger">
+            </div>
+
+            <!-- AMERICAN BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>American Burger</h4>
+                    <p>Pan Gourmet, 120 gr de carne, Bacon, Queso cheddar, Lechuga y tomate, Cebolla morada, Salsa de la casa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 26.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('American Burger (Sola)', 26000, -1)">-</button>
+                            <span class="qty-count" id="qty-American Burger (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('American Burger (Sola)', 26000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 40.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('American Burger (Combo)', 40000, -1)">-</button>
+                            <span class="qty-count" id="qty-American Burger (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('American Burger (Combo)', 40000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" alt="American Burger">
+            </div>
+
+            <!-- TEXAS BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Texas Burger</h4>
+                    <p>Pan Gourmet, Doble carne, Doble cheddar, Bacon, Aros de cebolla, Salsa de la casa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 30.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Texas Burger (Sola)', 30000, -1)">-</button>
+                            <span class="qty-count" id="qty-Texas Burger (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Texas Burger (Sola)', 30000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 46.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Texas Burger (Combo)', 46000, -1)">-</button>
+                            <span class="qty-count" id="qty-Texas Burger (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Texas Burger (Combo)', 46000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200" alt="Texas Burger">
+            </div>
+
+            <!-- AYO BURGER -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Ayo Burger</h4>
+                    <p>Pan Gourmet, Doble carne, Queso cheddar, Mozzarella, Bacon, Cebolla, Salsa de la casa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 30.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Ayo Burger (Sola)', 30000, -1)">-</button>
+                            <span class="qty-count" id="qty-Ayo Burger (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Ayo Burger (Sola)', 30000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 45.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Ayo Burger (Combo)', 45000, -1)">-</button>
+                            <span class="qty-count" id="qty-Ayo Burger (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Ayo Burger (Combo)', 45000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=200" alt="Ayo Burger">
+            </div>
+
+            <!-- ARABE ROLLING -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Arabe Rolling</h4>
+                    <p>Pan Árabe, Carne y Pollo (mixto), Queso mozzarella, Repollo y tomate, Salsa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 27.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Arabe Rolling (Sola)', 27000, -1)">-</button>
+                            <span class="qty-count" id="qty-Arabe Rolling (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Arabe Rolling (Sola)', 27000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 45.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Arabe Rolling (Combo)', 45000, -1)">-</button>
+                            <span class="qty-count" id="qty-Arabe Rolling (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Arabe Rolling (Combo)', 45000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200" alt="Arabe Rolling">
+            </div>
+
+            <!-- SANDWICH DE LOMITO -->
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Sandwich de Lomito</h4>
+                    <p>Pan Baguette, Carne lomito, Lechuga y tomate, Huevo, Queso mozzarella, Jamón, Salsa.</p>
+                    
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Sola: Gs. 27.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Sandwich de Lomito (Sola)', 27000, -1)">-</button>
+                            <span class="qty-count" id="qty-Sandwich de Lomito (Sola)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Sandwich de Lomito (Sola)', 27000, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <span class="prod-price">Combo: Gs. 45.000</span>
+                        <div class="controls">
+                            <button class="btn-qty" onclick="updateQty('Sandwich de Lomito (Combo)', 45000, -1)">-</button>
+                            <span class="qty-count" id="qty-Sandwich de Lomito (Combo)">0</span>
+                            <button class="btn-qty" onclick="updateQty('Sandwich de Lomito (Combo)', 45000, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?w=200" alt="Sandwich de Lomito">
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: LOMITOS -->
+        <h2 class="section-title">LOMITOS (PAN ÁRABE)</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Lomito Árabe Mixto</h4>
+                    <span class="prod-price">Gs. 27.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Lomito Árabe Mixto', 27000, -1)">-</button>
+                        <span class="qty-count" id="qty-Lomito Árabe Mixto">0</span>
+                        <button class="btn-qty" onclick="updateQty('Lomito Árabe Mixto', 27000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?w=200" alt="Lomito Mixto">
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Lomito Árabe de Pollo</h4>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Lomito Árabe de Pollo', 25000, -1)">-</button>
+                        <span class="qty-count" id="qty-Lomito Árabe de Pollo">0</span>
+                        <button class="btn-qty" onclick="updateQty('Lomito Árabe de Pollo', 25000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=200" alt="Lomito de Pollo">
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Lomito Árabe de Carne</h4>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Lomito Árabe de Carne', 30000, -1)">-</button>
+                        <span class="qty-count" id="qty-Lomito Árabe de Carne">0</span>
+                        <button class="btn-qty" onclick="updateQty('Lomito Árabe de Carne', 30000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200" alt="Lomito de Carne">
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PAPAS FRITAS -->
+        <h2 class="section-title">PAPAS FRITAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Papas Fritas Pequeña</h4>
+                    <span class="prod-price">Gs. 12.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Papas Fritas Pequeña', 12000, -1)">-</button>
+                        <span class="qty-count" id="qty-Papas Fritas Pequeña">0</span>
+                        <button class="btn-qty" onclick="updateQty('Papas Fritas Pequeña', 12000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200" alt="Papas Pequeña">
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Papas Fritas Mediana</h4>
+                    <span class="prod-price">Gs. 18.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Papas Fritas Mediana', 18000, -1)">-</button>
+                        <span class="qty-count" id="qty-Papas Fritas Mediana">0</span>
+                        <button class="btn-qty" onclick="updateQty('Papas Fritas Mediana', 18000, 1)">+</button>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?w=200" alt="Papas Mediana">
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: AGREGADOS -->
+        <h2 class="section-title">AGREGADOS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Extra carne</h4>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado: Extra carne', 10000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado: Extra carne">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado: Extra carne', 10000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pepinillos</h4>
+                    <span class="prod-price">Gs. 3.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado: Pepinillos', 3000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado: Pepinillos">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado: Pepinillos', 3000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Bacon</h4>
+                    <span class="prod-price">Gs. 3.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado: Bacon', 3000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado: Bacon">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado: Bacon', 3000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Cheddar</h4>
+                    <span class="prod-price">Gs. 3.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado: Cheddar', 3000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado: Cheddar">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado: Cheddar', 3000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Cebolla</h4>
+                    <span class="prod-price">Gs. 2.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado: Cebolla', 2000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado: Cebolla">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado: Cebolla', 2000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Huevo</h4>
+                    <span class="prod-price">Gs. 3.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agregado: Huevo', 3000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agregado: Huevo">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agregado: Huevo', 3000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: BEBIDAS -->
+        <h2 class="section-title">BEBIDAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Coca Cola 250 ml</h4>
+                    <span class="prod-price">Gs. 5.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Coca Cola 250 ml', 5000, -1)">-</button>
+                        <span class="qty-count" id="qty-Coca Cola 250 ml">0</span>
+                        <button class="btn-qty" onclick="updateQty('Coca Cola 250 ml', 5000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Coca Cola 500 ml</h4>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Coca Cola 500 ml', 10000, -1)">-</button>
+                        <span class="qty-count" id="qty-Coca Cola 500 ml">0</span>
+                        <button class="btn-qty" onclick="updateQty('Coca Cola 500 ml', 10000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Coca Cola 1 litro</h4>
+                    <span class="prod-price">Gs. 12.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Coca Cola 1 litro', 12000, -1)">-</button>
+                        <span class="qty-count" id="qty-Coca Cola 1 litro">0</span>
+                        <button class="btn-qty" onclick="updateQty('Coca Cola 1 litro', 12000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Agua Mineral</h4>
+                    <span class="prod-price">Gs. 5.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Agua Mineral', 5000, -1)">-</button>
+                        <span class="qty-count" id="qty-Agua Mineral">0</span>
+                        <button class="btn-qty" onclick="updateQty('Agua Mineral', 5000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Skol</h4>
+                    <span class="prod-price">Gs. 7.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Cerveza Skol', 7000, -1)">-</button>
+                        <span class="qty-count" id="qty-Cerveza Skol">0</span>
+                        <button class="btn-qty" onclick="updateQty('Cerveza Skol', 7000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Munich Ultra</h4>
+                    <span class="prod-price">Gs. 6.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Cerveza Munich Ultra', 6000, -1)">-</button>
+                        <span class="qty-count" id="qty-Cerveza Munich Ultra">0</span>
+                        <button class="btn-qty" onclick="updateQty('Cerveza Munich Ultra', 6000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Heineken</h4>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Cerveza Heineken', 10000, -1)">-</button>
+                        <span class="qty-count" id="qty-Cerveza Heineken">0</span>
+                        <button class="btn-qty" onclick="updateQty('Cerveza Heineken', 10000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Coronita</h4>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <div class="controls">
+                        <button class="btn-qty" onclick="updateQty('Cerveza Coronita', 10000, -1)">-</button>
+                        <span class="qty-count" id="qty-Cerveza Coronita">0</span>
+                        <button class="btn-qty" onclick="updateQty('Cerveza Coronita', 10000, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Footer Minimalista -->
+        <footer class="social-footer">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="scalat-credits">
+                Desarrollado por <span>Sclat</span>
+            </div>
+        </footer>
+    </div>
+    <!-- Script integrado directamente para descartar problemas de carga -->
+       <script src="js (1).js"></script>
+
+</body>
+</html>
