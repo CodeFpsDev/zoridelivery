@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>La Estacion | Zori Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container"></div>
+        </header>
+
+        <!-- Banner del Local -->
+        <section class="promo-banner">
+            <img src="la estacion.webp" alt="Banner La Estacion">
+        </section>
+
+        <!-- CATEGORÍA: HAMBURGUESAS -->
+        <h2 class="section-title">HAMBURGUESAS</h2>
+        <section class="products-grid">
+            
+            <!-- SIMPLE -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Simple">
+                <div class="prod-info">
+                    <h4>Simple</h4>
+                    <p>Pan gourmet, 110 g de carne, tomate, lechuga, ketchup y mayonesa.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Simple', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <!-- COMPLETA -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=200" alt="Completa">
+                <div class="prod-info">
+                    <h4>Completa</h4>
+                    <p>Pan gourmet, 110 g de carne, queso cheddar, panceta, cebolla morada, huevo, tomate, lechuga, ketchup y mayonesa.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Completa', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <!-- BARBACOA -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589?w=200" alt="Barbacoa">
+                <div class="prod-info">
+                    <h4>Barbacoa</h4>
+                    <p>Pan gourmet, 110 g de carne, queso mozzarella, panceta, pepinillos, salsa barbacoa.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Barbacoa', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <!-- DOBLE CHEESE BACON -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" alt="Doble Cheese Bacon">
+                <div class="prod-info">
+                    <h4>Doble Cheese Bacon</h4>
+                    <p>Pan gourmet, doble 110 g de carne, doble panceta, doble cheddar, salsa de la casa.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Doble Cheese Bacon', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <!-- CATUBURGUER -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" alt="Catuburguer">
+                <div class="prod-info">
+                    <h4>Catuburguer</h4>
+                    <p>Pan gourmet, 110 g de carne, queso catupiry, cebolla, tomate y mayonesa.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Catuburguer', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <!-- LA ESTACIÓN -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200" alt="La Estación">
+                <div class="prod-info">
+                    <h4>La Estación</h4>
+                    <p>Pan gourmet, doble 110 g de carne, doble queso cheddar, doble panceta, pepinillos, cebollita, salsa de la casa.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="updateQty('La Estación', 40000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PAPAS FRITAS -->
+        <h2 class="section-title">PAPAS FRITAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200" alt="Chico">
+                <div class="prod-info">
+                    <h4>Chico</h4>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Papas Fritas Chico', 10000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?w=200" alt="Mediano">
+                <div class="prod-info">
+                    <h4>Mediano</h4>
+                    <span class="prod-price">Gs. 15.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Papas Fritas Mediano', 15000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?w=200" alt="Grande">
+                <div class="prod-info">
+                    <h4>Grande</h4>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Papas Fritas Grande', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PIZZAS -->
+        <h2 class="section-title">PIZZAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Mozzarella">
+                <div class="prod-info">
+                    <h4>Mozzarella</h4>
+                    <p>Salsa de tomate, queso mozzarella, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Mozzarella', 40000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200" alt="Jamón y Queso">
+                <div class="prod-info">
+                    <h4>Jamón y Queso</h4>
+                    <p>Salsa de tomate, queso mozzarella, jamón, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Jamón y Queso', 40000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200" alt="Choclo">
+                <div class="prod-info">
+                    <h4>Choclo</h4>
+                    <p>Salsa de tomate, queso mozzarella, choclo, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Choclo', 40000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Palmito">
+                <div class="prod-info">
+                    <h4>Palmito</h4>
+                    <p>Salsa de tomate, queso mozzarella, palmito, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Palmito', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200" alt="Pepperoni">
+                <div class="prod-info">
+                    <h4>Pepperoni</h4>
+                    <p>Salsa de tomate, queso mozzarella, pepperoni, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Pepperoni', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Pollo Catupiry">
+                <div class="prod-info">
+                    <h4>Pollo Catupiry</h4>
+                    <p>Salsa de tomate, queso mozzarella, pollo, queso catupiry, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 55.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Pollo Catupiry', 55000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200" alt="Barbacoa">
+                <div class="prod-info">
+                    <h4>Barbacoa</h4>
+                    <p>Salsa de tomate, queso mozzarella, pollo, locote, cebolla morada, salsa barbacoa, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 55.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Barbacoa', 55000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200" alt="La Estación Hot">
+                <div class="prod-info">
+                    <h4>La Estación Hot</h4>
+                    <p>Salsa de tomate, queso mozzarella, carne vacuna, cebolla, panceta, salsa picante, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 65.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza La Estación Hot', 65000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Lomi Pizza La Estación">
+                <div class="prod-info">
+                    <h4>Lomi Pizza La Estación</h4>
+                    <p>Salsa de tomate, queso mozzarella, carne, jamón, huevo, lechuga, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 120.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Lomi Pizza La Estación', 120000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Napolitana">
+                <div class="prod-info">
+                    <h4>Pizza Napolitana</h4>
+                    <p>Salsa de tomate, queso mozzarella, tomate, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 58.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Napolitana', 58000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200" alt="Tres Queso Gourmet">
+                <div class="prod-info">
+                    <h4>Pizza Tres Queso Gourmet</h4>
+                    <p>Salsa de tomate, queso mozzarella, queso catupiry, queso cheddar, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 60.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Tres Queso Gourmet', 60000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200" alt="Calabresa">
+                <div class="prod-info">
+                    <h4>Pizza Calabresa</h4>
+                    <p>Salsa de tomate, queso mozzarella, calabresa, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 63.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Calabresa', 63000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Katu & Lomi">
+                <div class="prod-info">
+                    <h4>Pizza Katu & Lomi</h4>
+                    <p>Salsa de tomate, queso mozzarella, carne, queso catupiry, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 80.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Katu & Lomi', 80000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Mexicana Hot">
+                <div class="prod-info">
+                    <h4>Pizza Mexicana Hot</h4>
+                    <p>Salsa de tomate, queso mozzarella, carne, morrón, cebolla, picante, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 70.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Mexicana Hot', 70000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200" alt="Atún Lomito">
+                <div class="prod-info">
+                    <h4>Pizza de Atún Lomito</h4>
+                    <p>Salsa de tomate, queso mozzarella, atún, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 65.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza de Atún Lomito', 65000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200" alt="Fugazzeta">
+                <div class="prod-info">
+                    <h4>Pizza Fugazzeta</h4>
+                    <p>Salsa de tomate, queso mozzarella, cebolla, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 55.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Fugazzeta', 55000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Champiñón Deluxe">
+                <div class="prod-info">
+                    <h4>Pizza Champiñón Deluxe</h4>
+                    <p>Salsa de tomate, queso mozzarella, champiñón blanco, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 63.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Champiñón Deluxe', 63000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Katu & Papa">
+                <div class="prod-info">
+                    <h4>Pizza Katu & Papa</h4>
+                    <p>Salsa de tomate, queso mozzarella, papas fritas, queso catupiry, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 70.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Katu & Papa', 70000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200" alt="Bacon & Cheddar">
+                <div class="prod-info">
+                    <h4>Pizza Bacon & Cheddar</h4>
+                    <p>Salsa de tomate, queso mozzarella, panceta, queso cheddar, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 70.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Bacon & Cheddar', 70000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200" alt="Kutu & Bacon">
+                <div class="prod-info">
+                    <h4>Pizza Kutu & Bacon</h4>
+                    <p>Salsa de tomate, queso mozzarella, panceta, queso catupiry, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 68.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Kutu & Bacon', 68000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Picaña al Ajillo">
+                <div class="prod-info">
+                    <h4>Picaña al Ajillo</h4>
+                    <p>Salsa de tomate, queso mozzarella, picaña al ajo, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 70.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Picaña al Ajillo', 70000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Primavera">
+                <div class="prod-info">
+                    <h4>Pizza Primavera</h4>
+                    <p>Salsa de tomate, queso mozzarella, jamón, huevo, tomate, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 68.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Primavera', 68000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200" alt="Sabor Criollo">
+                <div class="prod-info">
+                    <h4>Pizza Sabor Criollo</h4>
+                    <p>Salsa de tomate, queso mozzarella, chorizo parrillero, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 70.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Sabor Criollo', 70000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200" alt="Salchi Mix">
+                <div class="prod-info">
+                    <h4>Pizza Salchi Mix</h4>
+                    <p>Salsa de tomate, queso mozzarella, salchicha, aceituna y orégano.</p>
+                    <span class="prod-price">Gs. 65.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Salchi Mix', 65000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Footer Minimalista -->
+        <footer class="social-footer">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="scalat-credits">
+                Desarrollado por <span>Sclat</span>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Script integrado directamente para descartar problemas de carga -->
+    <script src="js (1).js"></script>
+
+</body>
+</html>
