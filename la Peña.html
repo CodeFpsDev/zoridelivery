@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>La Peña Rock N' Roll | Zori Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container"></div>
+        </header>
+
+        <!-- Banner del Local -->
+        <section class="promo-banner" style="width: 100%; height: 220px; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; overflow: hidden; padding: 10px;">
+            <img src="la peña-8.png" alt="Banner La Peña Rock N' Roll" style="width: 100%; height: 100%; object-fit: contain;">
+        </section>
+
+        <!-- CATEGORÍA: HAMBURGUESAS -->
+        <h2 class="section-title">HAMBURGUESAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Clásica">
+                <div class="prod-info">
+                    <h4>Clásica</h4>
+                    <p>Hamburguesa tradicional.</p>
+                    <span class="prod-price">Gs. 15.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Clásica', 15000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=200" alt="Bacon">
+                <div class="prod-info">
+                    <h4>Bacon</h4>
+                    <p>Hamburguesa con crujiente tocino.</p>
+                    <span class="prod-price">Gs. 18.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Bacon', 18000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200" alt="Doble carne">
+                <div class="prod-info">
+                    <h4>Doble carne</h4>
+                    <p>Doble porción de carne jugosa.</p>
+                    <span class="prod-price">Gs. 23.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Doble carne', 23000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=200" alt="Triple carne">
+                <div class="prod-info">
+                    <h4>Triple carne</h4>
+                    <p>Triple porción de carne para mayor apetito.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Triple carne', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="La Peña">
+                <div class="prod-info">
+                    <h4>La Peña</h4>
+                    <p>Doble carne, panceta y extra queso cheddar.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('La Peña', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: LOMITO ÁRABE -->
+        <h2 class="section-title">LOMITO ÁRABE</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=200" alt="Mixto">
+                <div class="prod-info">
+                    <h4>Mixto</h4>
+                    <p>Lomito árabe tradicional estilo La Peña.</p>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Lomito Mixto', 25000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=200" alt="Mbarete">
+                <div class="prod-info">
+                    <h4>Mbarete</h4>
+                    <p>Con panceta y huevo.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Lomito Mbarete', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PIZZAS -->
+        <h2 class="section-title">PIZZAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Muzzarella">
+                <div class="prod-info">
+                    <h4>Muzzarella</h4>
+                    <p>Salsa, Muzzarella, Orégano.</p>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Muzzarella', 45000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200" alt="Choclo">
+                <div class="prod-info">
+                    <h4>Choclo</h4>
+                    <p>Salsa, Muzzarella, Choclo, Orégano.</p>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Choclo', 45000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Jamón y queso">
+                <div class="prod-info">
+                    <h4>Jamón y queso</h4>
+                    <p>Salsa, Muzzarella, Jamón, Orégano.</p>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Jamón y queso', 45000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200" alt="Cheddar">
+                <div class="prod-info">
+                    <h4>Cheddar</h4>
+                    <p>Salsa, Muzzarella, Queso Cheddar, Orégano.</p>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Cheddar', 45000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200" alt="Napolitana">
+                <div class="prod-info">
+                    <h4>Napolitana</h4>
+                    <p>Salsa, Muzzarella, Tomate, Orégano.</p>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Napolitana', 45000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200" alt="Peperonni">
+                <div class="prod-info">
+                    <h4>Peperonni</h4>
+                    <p>Salsa, Muzzarella, Peperonni, Orégano.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Peperonni', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Calabresa">
+                <div class="prod-info">
+                    <h4>Calabresa</h4>
+                    <p>Salsa, Muzzarella, Calabresa, Orégano.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Calabresa', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=200" alt="Pollo catupiry">
+                <div class="prod-info">
+                    <h4>Pollo catupiry</h4>
+                    <p>Salsa, Muzzarella, Pollo, Catupiry, Orégano.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Pollo catupiry', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Carnívora">
+                <div class="prod-info">
+                    <h4>Carnívora</h4>
+                    <p>Variedad de carnes y embutidos con muzzarella.</p>
+                    <span class="prod-price">Gs. 60.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Carnívora', 60000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PAPAS FRITAS -->
+        <h2 class="section-title">PAPAS FRITAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200" alt="Mediana">
+                <div class="prod-info">
+                    <h4>Mediana</h4>
+                    <p>Porción mediana de papas fritas crujientes.</p>
+                    <span class="prod-price">Gs. 12.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Papas Mediana', 12000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200" alt="Grande">
+                <div class="prod-info">
+                    <h4>Grande</h4>
+                    <p>Porción grande de papas fritas.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Papas Grande', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=200" alt="Salchipapa">
+                <div class="prod-info">
+                    <h4>Salchipapa</h4>
+                    <p>Papas fritas con rodajas de salchicha.</p>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Salchipapa', 25000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200" alt="Panceta y cheddar">
+                <div class="prod-info">
+                    <h4>Panceta y cheddar</h4>
+                    <p>Papas fritas cubiertas de cheddar fundido y panceta.</p>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Papas Panceta y cheddar', 25000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- FOOTER DE DESARROLLO -->
+       <footer class="social-footer">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="scalat-credits">
+                Desarrollado por <span>Sclat tech</span>
+            </div>
+        </footer>
+<script src="js.js"></script>
+
+    </div>
+</body>
+</html>
