@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>los abuelos| Zori Delivery</title>
+    <title>Los Abuelos | Zori Delivery</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css.css">
@@ -275,7 +275,7 @@
 
         <!-- Banner del Local -->
         <section class="promo-banner">
-            <img src="los abuelos logo.png" alt="Banner Home of Burgers">
+            <img src="los abuelos logo.png" alt="Banner Los Abuelos">
         </section>
 
         <!-- CATEGORÍA: ESPECIALIDADES Y COMIDAS -->
@@ -525,21 +525,18 @@
         </footer>
     </div>
 
-    <!-- Script simplificado: solo un botón PEDIR que añade al carrito y cambia de estado visual -->
+    <!-- Script de control local y de botones -->
     <script>
         function agregarProducto(nombreProducto, precio, id) {
-            // Añadir al carrito la cantidad de 1
             if (typeof updateQty === 'function') {
                 updateQty(nombreProducto, precio, 1);
             }
 
-            // Cambiar visualmente el botón a agregado de forma limpia
             const btn = document.getElementById('btn-pedir-' + id);
             if (btn) {
                 btn.innerText = '¡AGREGADO!';
                 btn.classList.add('agregado');
                 
-                // Opcional: regresa al texto original después de 1.5 segundos
                 setTimeout(() => {
                     btn.innerText = 'PEDIR';
                     btn.classList.remove('agregado');
@@ -547,7 +544,30 @@
             }
         }
     </script>
-    <!-- Script principal de carrito -->
+
+    <!-- Script principal de carrito modificado para asegurar el nombre del local -->
     <script src="js.js"></script>
+    <script>
+        // Parche específico para forzar que el mensaje de WhatsApp diga "Los Abuelos" en esta página
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (typeof database !== 'undefined') {
+                    database["los abuelos"] = {
+                        nombre: "Los Abuelos",
+                        whatsapp: "595982309464"
+                    };
+                }
+                // Sobrescribir temporalmente la función obtenerStoreActual si está definida en js.js
+                if (typeof obtenerStoreActual === 'function') {
+                    window.obtenerStoreActual = function() {
+                        return {
+                            nombre: "Los Abuelos",
+                            whatsapp: "595982309464"
+                        };
+                    };
+                }
+            }, 100);
+        });
+    </script>
 </body>
 </html>
