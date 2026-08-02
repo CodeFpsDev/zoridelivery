@@ -156,7 +156,7 @@
                 </a>
             </div>
             <div class="scalat-credits">
-                Desarrollado por <span>Sclat</span>
+                Desarrollado por <span>Sclat tech</span>
             </div>
         </footer>
     </div>
@@ -195,17 +195,19 @@
 
         // Array de datos de los locales reales
         const locales = [
-            { id: "burgerland", nombre: "Burgerland", img: "burgerland.webp", url: "burgerland.html" },
+            { id: "burgerland", nombre: "Burgerland", img: "burgerland.png", url: "burgerland.html" },
             { id: "Valhalla Burger", nombre: "Valhalla Burger", img: "valhalla.webp", url: "Valhalla.html" },
             { id: "Rolling Cook.html", nombre: "Rolling Cook", img: "rolling cook.webp", url: "Rolling Cook.html" },
             { id: "Absoluto.html", nombre: "Absoluto", img: "absoluto.webp", url: "Absoluto.html" },
-            { id: "home burgers", nombre: "home burgers", img: "home burgers.png", url: "MIJAL.html" },
+            { id: "home burgers.png", nombre: "MIJAL", img: "home burgers.png", url: "MIJAL.html" },
             { id: "Acai berry", nombre: "Acai berry", img: "Açaí berry.webp", url: "Acai berry.html" },
             { id: "Bacoa burger", nombre: "Bacoa burger", img: "bacoa.webp", url: "Bacoa burger.html" },
             { id: "Los Abuelos", nombre: "los abuelos", img: "los abuelos logo.png", url: "los abuelos.html" },
-            { id: "La Estancion", nombre: "La Estacion", img: "la estacion web.jpeg", url: "la estacion.html" }, 
-            { id: "Porkys", nombre: "Porkys", img: "porkis.png", url: "Porkys.html" }
-         ];
+            { id: "La Estancion", nombre: "La Estacion", img: "la estacion.web.jpeg", url: "la estacion.html" }, 
+            { id: "Porkys", nombre: "Porkys", img: "porkis.web.jpeg", url: "Porkys.html" },
+            { id: "La Peña", nombre: "La Peña", img: "la peña-8.png", url: "la Peña.html" },
+
+           ];
 
         const container = document.getElementById('stores-container');
 
@@ -225,7 +227,7 @@
             });
 
             // Agregar las 2 tarjetas de "Agrega tu local" al final de la grilla
-            for (let i = 0; i < 2; i++) {
+            for (let i = 0; i < 3; i++) {
                 container.innerHTML += `
                     <div class="store-card add-store" onclick="contactarWhatsApp()">
                         <i class="fa-solid fa-store-slash"></i>
@@ -257,5 +259,7 @@
         // Inicializar renderizado
         renderLocales(locales);
     </script>
+    <script src="js.js"></script>
+
 </body>
 </html>
