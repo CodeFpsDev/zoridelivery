@@ -7,31 +7,82 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css.css">
-</head>
-<body>
-<style>
-        .product-card-with-img {
+    <style>
+        /* Estilos generales de la tarjeta de producto */
+        .product-card {
+            display: flex;
             background: #ffffff;
             border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            gap: 12px;
+            align-items: center;
+        }
+        .product-card .prod-info {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            flex-grow: 1;
         }
-        .prod-header-img {
-            width: 100%;
-            height: 180px;
+        .product-card .prod-info h4 {
+            font-size: 0.95rem;
+            margin: 0 0 4px 0;
+            color: #333;
+            font-weight: 700;
+        }
+        .product-card .prod-info p {
+            font-size: 0.78rem;
+            color: #666;
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+        }
+        .product-card .prod-price {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ff6600;
+            margin-bottom: 8px;
+        }
+        .product-card img {
+            width: 90px;
+            height: 90px;
             object-fit: cover;
             border-radius: 8px;
+            flex-shrink: 0;
         }
+
+        /* Botón PEDIR inicial */
+        .btn-pedir-inicial {
+            background: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(255, 102, 0, 0.3);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-pedir-inicial:active {
+            transform: scale(0.97);
+            background: #e55c00;
+        }
+
+        /* Estado cuando ya está agregado (muestra cantidad o "Agregado") */
+        .btn-pedir-inicial.agregado {
+            background: #25d366;
+            box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+        }
+
         /* Estilos del Carrito Flotante */
         .cart-float-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #6a0da5;
+            background: #ff6600;
             color: white;
             border: none;
             border-radius: 50px;
@@ -39,7 +90,7 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(106, 13, 165, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -49,7 +100,7 @@
         }
         .cart-float-btn:active {
             transform: scale(0.95);
-            background: #4a0875;
+            background: #e55c00;
         }
         .cart-badge {
             background: #ffcc00;
@@ -147,7 +198,7 @@
             color: #333;
         }
         .cart-item-price {
-            color: #6a0da5;
+            color: #ff6600;
             font-weight: 700;
             font-size: 0.85rem;
         }
@@ -184,7 +235,7 @@
             color: #333;
         }
         .cart-total-section span.amount {
-            color: #6a0da5;
+            color: #ff6600;
         }
         .btn-enviar-pedido {
             background: #25d366;
@@ -219,13 +270,14 @@
         <!-- Header con botón Volver -->
         <header class="main-header" style="position: relative;">
             <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
-            <div class="logo-container">
+            <div class="logo-container"></div>
         </header>
 
         <!-- Banner del Local -->
         <section class="promo-banner">
             <img src="los abuelos logo.png" alt="Banner Home of Burgers">
         </section>
+
         <!-- CATEGORÍA: ESPECIALIDADES Y COMIDAS -->
         <h2 class="section-title">NUESTROS MENÚ</h2>
         <section class="products-grid">
@@ -236,11 +288,7 @@
                     <h4>Hambupizza Personal</h4>
                     <p>Deliciosa hambupizza personal. También contamos con lomipizza personal (Gs. 40.000).</p>
                     <span class="prod-price">Gs. 35.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Hambupizza Personal', 35000, -1)">-</button>
-                        <span class="qty-count" id="qty-Hambupizza-Personal">0</span>
-                        <button class="btn-qty" onclick="updateQty('Hambupizza Personal', 35000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Hambupizza-Personal" onclick="agregarProducto('Hambupizza Personal', 35000, 'Hambupizza-Personal')">PEDIR</button>
                 </div>
                 <img src="image_90bade.jpg" alt="Hambupizza personal">
             </div>
@@ -251,11 +299,7 @@
                     <h4>Lomipizza Personal</h4>
                     <p>Exquisita lomipizza tamaño personal.</p>
                     <span class="prod-price">Gs. 40.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Lomipizza Personal', 40000, -1)">-</button>
-                        <span class="qty-count" id="qty-Lomipizza-Personal">0</span>
-                        <button class="btn-qty" onclick="updateQty('Lomipizza Personal', 40000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Lomipizza-Personal" onclick="agregarProducto('Lomipizza Personal', 40000, 'Lomipizza-Personal')">PEDIR</button>
                 </div>
                 <img src="image_90b75b.png" alt="Lomipizza personal">
             </div>
@@ -264,13 +308,9 @@
             <div class="product-card">
                 <div class="prod-info">
                     <h4>Alitas Fritas (Grande)</h4>
-                    <p>Crujientes alitas fritas. (Tenemos opciones: personal Gs. 30.000, mediano Gs. 55.000)</p>
+                    <p>Crujientes alitas fritas. (Opciones: personal Gs. 30.000, mediano Gs. 55.000)</p>
                     <span class="prod-price">Gs. 80.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Alitas Fritas Grande', 80000, -1)">-</button>
-                        <span class="qty-count" id="qty-Alitas-Fritas-Grande">0</span>
-                        <button class="btn-qty" onclick="updateQty('Alitas Fritas Grande', 80000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Alitas-Fritas-Grande" onclick="agregarProducto('Alitas Fritas Grande', 80000, 'Alitas-Fritas-Grande')">PEDIR</button>
                 </div>
                 <img src="image_90ba83.png" alt="Alitas fritas">
             </div>
@@ -281,11 +321,7 @@
                     <h4>Alitas Fritas (Personal)</h4>
                     <p>Porción personal de alitas fritas.</p>
                     <span class="prod-price">Gs. 30.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Alitas Fritas Personal', 30000, -1)">-</button>
-                        <span class="qty-count" id="qty-Alitas-Fritas-Personal">0</span>
-                        <button class="btn-qty" onclick="updateQty('Alitas Fritas Personal', 30000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Alitas-Fritas-Personal" onclick="agregarProducto('Alitas Fritas Personal', 30000, 'Alitas-Fritas-Personal')">PEDIR</button>
                 </div>
                 <img src="image_90ba83.png" alt="Alitas fritas personal">
             </div>
@@ -296,11 +332,7 @@
                     <h4>Alitas Fritas (Mediano)</h4>
                     <p>Porción mediana de alitas fritas.</p>
                     <span class="prod-price">Gs. 55.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Alitas Fritas Mediano', 55000, -1)">-</button>
-                        <span class="qty-count" id="qty-Alitas-Fritas-Mediano">0</span>
-                        <button class="btn-qty" onclick="updateQty('Alitas Fritas Mediano', 55000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Alitas-Fritas-Mediano" onclick="agregarProducto('Alitas Fritas Mediano', 55000, 'Alitas-Fritas-Mediano')">PEDIR</button>
                 </div>
                 <img src="image_90ba83.png" alt="Alitas fritas mediano">
             </div>
@@ -309,13 +341,9 @@
             <div class="product-card">
                 <div class="prod-info">
                     <h4>Bocadito (Grande)</h4>
-                    <p>Surtido completo de bocaditos. También contamos con bocadito mediano (Gs. 80.000).</p>
+                    <p>Surtido completo de bocaditos. También mediano (Gs. 80.000).</p>
                     <span class="prod-price">Gs. 110.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Bocadito Grande', 110000, -1)">-</button>
-                        <span class="qty-count" id="qty-Bocadito-Grande">0</span>
-                        <button class="btn-qty" onclick="updateQty('Bocadito Grande', 110000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Bocadito-Grande" onclick="agregarProducto('Bocadito Grande', 110000, 'Bocadito-Grande')">PEDIR</button>
                 </div>
                 <img src="image_90b7b3.png" alt="Bocadito">
             </div>
@@ -326,11 +354,7 @@
                     <h4>Bocadito Mediano</h4>
                     <p>Surtido mediano de deliciosos bocaditos.</p>
                     <span class="prod-price">Gs. 80.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Bocadito Mediano', 80000, -1)">-</button>
-                        <span class="qty-count" id="qty-Bocadito-Mediano">0</span>
-                        <button class="btn-qty" onclick="updateQty('Bocadito Mediano', 80000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Bocadito-Mediano" onclick="agregarProducto('Bocadito Mediano', 80000, 'Bocadito-Mediano')">PEDIR</button>
                 </div>
                 <img src="image_90b7b3.png" alt="Bocadito mediano">
             </div>
@@ -339,13 +363,9 @@
             <div class="product-card">
                 <div class="prod-info">
                     <h4>Pizza Peperoni</h4>
-                    <p>Antojo de pizza de peperoni. También contamos con opción de borde relleno (Gs. 55.000).</p>
+                    <p>Antojo de pizza de peperoni. Borde relleno (Gs. 55.000).</p>
                     <span class="prod-price">Gs. 45.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Pizza Peperoni', 45000, -1)">-</button>
-                        <span class="qty-count" id="qty-Pizza-Peperoni">0</span>
-                        <button class="btn-qty" onclick="updateQty('Pizza Peperoni', 45000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Pizza-Peperoni" onclick="agregarProducto('Pizza Peperoni', 45000, 'Pizza-Peperoni')">PEDIR</button>
                 </div>
                 <img src="image_90b75b.png" alt="Peperoni">
             </div>
@@ -356,11 +376,7 @@
                     <h4>Pizza Peperoni Borde Relleno</h4>
                     <p>Pizza de peperoni con delicioso borde relleno.</p>
                     <span class="prod-price">Gs. 55.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Pizza Peperoni Borde Relleno', 55000, -1)">-</button>
-                        <span class="qty-count" id="qty-Pizza-Peperoni-Borde-Relleno">0</span>
-                        <button class="btn-qty" onclick="updateQty('Pizza Peperoni Borde Relleno', 55000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Pizza-Peperoni-Borde-Relleno" onclick="agregarProducto('Pizza Peperoni Borde Relleno', 55000, 'Pizza-Peperoni-Borde-Relleno')">PEDIR</button>
                 </div>
                 <img src="image_90b75b.png" alt="Peperoni borde relleno">
             </div>
@@ -377,11 +393,7 @@
                     <h4>Açaí Tradicional (Chico - 300ml)</h4>
                     <p>Banana, granola, leche condensada, leche en polvo, açaí.</p>
                     <span class="prod-price">Gs. 15.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Tradicional Chico', 15000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Tradicional-Chico">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Tradicional Chico', 15000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tradicional-Chico" onclick="agregarProducto('Acai Tradicional Chico', 15000, 'Acai-Tradicional-Chico')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Tradicional Chico">
             </div>
@@ -391,11 +403,7 @@
                     <h4>Açaí Tradicional (Mediano - 400ml)</h4>
                     <p>Banana, granola, leche condensada, leche en polvo, açaí.</p>
                     <span class="prod-price">Gs. 20.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Tradicional Mediano', 20000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Tradicional-Mediano">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Tradicional Mediano', 20000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tradicional-Mediano" onclick="agregarProducto('Acai Tradicional Mediano', 20000, 'Acai-Tradicional-Mediano')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Tradicional Mediano">
             </div>
@@ -405,11 +413,7 @@
                     <h4>Açaí Tradicional (Grande - 500ml)</h4>
                     <p>Banana, granola, leche condensada, leche en polvo, açaí.</p>
                     <span class="prod-price">Gs. 25.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Tradicional Grande', 25000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Tradicional-Grande">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Tradicional Grande', 25000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tradicional-Grande" onclick="agregarProducto('Acai Tradicional Grande', 25000, 'Acai-Tradicional-Grande')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Tradicional Grande">
             </div>
@@ -420,11 +424,7 @@
                     <h4>Açaí Frutal (Chico - 300ml)</h4>
                     <p>Kiwi, banana, granola, leche condensada, frutilla, açaí.</p>
                     <span class="prod-price">Gs. 15.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Frutal Chico', 15000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Frutal-Chico">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Frutal Chico', 15000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Frutal-Chico" onclick="agregarProducto('Acai Frutal Chico', 15000, 'Acai-Frutal-Chico')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Frutal Chico">
             </div>
@@ -434,11 +434,7 @@
                     <h4>Açaí Frutal (Mediano - 400ml)</h4>
                     <p>Kiwi, banana, granola, leche condensada, frutilla, açaí.</p>
                     <span class="prod-price">Gs. 20.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Frutal Mediano', 20000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Frutal-Mediano">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Frutal Mediano', 20000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Frutal-Mediano" onclick="agregarProducto('Acai Frutal Mediano', 20000, 'Acai-Frutal-Mediano')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Frutal Mediano">
             </div>
@@ -448,11 +444,7 @@
                     <h4>Açaí Frutal (Grande - 500ml)</h4>
                     <p>Kiwi, banana, granola, leche condensada, frutilla, açaí.</p>
                     <span class="prod-price">Gs. 25.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Frutal Grande', 25000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Frutal-Grande">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Frutal Grande', 25000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Frutal-Grande" onclick="agregarProducto('Acai Frutal Grande', 25000, 'Acai-Frutal-Grande')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Frutal Grande">
             </div>
@@ -463,11 +455,7 @@
                     <h4>Açaí Tres Leches (Chico - 300ml)</h4>
                     <p>Leche condensada, leche en polvo, dulce de leche, açaí.</p>
                     <span class="prod-price">Gs. 15.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Tres Leches Chico', 15000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Tres-Leches-Chico">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Tres Leches Chico', 15000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tres-Leches-Chico" onclick="agregarProducto('Acai Tres Leches Chico', 15000, 'Acai-Tres-Leches-Chico')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Tres Leches Chico">
             </div>
@@ -477,11 +465,7 @@
                     <h4>Açaí Tres Leches (Mediano - 400ml)</h4>
                     <p>Leche condensada, leche en polvo, dulce de leche, açaí.</p>
                     <span class="prod-price">Gs. 20.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Tres Leches Mediano', 20000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Tres-Leches-Mediano">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Tres Leches Mediano', 20000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tres-Leches-Mediano" onclick="agregarProducto('Acai Tres Leches Mediano', 20000, 'Acai-Tres-Leches-Mediano')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Tres Leches Mediano">
             </div>
@@ -491,11 +475,7 @@
                     <h4>Açaí Tres Leches (Grande - 500ml)</h4>
                     <p>Leche condensada, leche en polvo, dulce de leche, açaí.</p>
                     <span class="prod-price">Gs. 25.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Tres Leches Grande', 25000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Tres-Leches-Grande">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Tres Leches Grande', 25000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tres-Leches-Grande" onclick="agregarProducto('Acai Tres Leches Grande', 25000, 'Acai-Tres-Leches-Grande')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Tres Leches Grande">
             </div>
@@ -506,11 +486,7 @@
                     <h4>Açaí Personalizado (Chico - 300ml)</h4>
                     <p>Banana, granola, oreo, nutella, leche condensada, leche en polvo, dulce de leche, açaí.</p>
                     <span class="prod-price">Gs. 18.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Personalizado Chico', 18000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Personalizado-Chico">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Personalizado Chico', 18000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Personalizado-Chico" onclick="agregarProducto('Acai Personalizado Chico', 18000, 'Acai-Personalizado-Chico')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Personalizado Chico">
             </div>
@@ -520,11 +496,7 @@
                     <h4>Açaí Personalizado (Mediano - 400ml)</h4>
                     <p>Banana, granola, oreo, nutella, leche condensada, leche en polvo, dulce de leche, açaí.</p>
                     <span class="prod-price">Gs. 23.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Personalizado Mediano', 23000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Personalizado-Mediano">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Personalizado Mediano', 23000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Personalizado-Mediano" onclick="agregarProducto('Acai Personalizado Mediano', 23000, 'Acai-Personalizado-Mediano')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Personalizado Mediano">
             </div>
@@ -534,11 +506,7 @@
                     <h4>Açaí Personalizado (Grande - 500ml)</h4>
                     <p>Banana, granola, oreo, nutella, leche condensada, leche en polvo, dulce de leche, açaí.</p>
                     <span class="prod-price">Gs. 28.000</span>
-                    <div class="controls">
-                        <button class="btn-qty" onclick="updateQty('Acai Personalizado Grande', 28000, -1)">-</button>
-                        <span class="qty-count" id="qty-Acai-Personalizado-Grande">0</span>
-                        <button class="btn-qty" onclick="updateQty('Acai Personalizado Grande', 28000, 1)">+</button>
-                    </div>
+                    <button class="btn-pedir-inicial" id="btn-pedir-Acai-Personalizado-Grande" onclick="agregarProducto('Acai Personalizado Grande', 28000, 'Acai-Personalizado-Grande')">PEDIR</button>
                 </div>
                 <img src="image_904ab9.png" alt="Acai Personalizado Grande">
             </div>
@@ -552,11 +520,34 @@
                 <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
             <div class="scalat-credits">
-                Desarrollado por <span>Sclat</span>
+                Desarrollado por <span>Sclat tech</span>
             </div>
         </footer>
     </div>
-    <!-- Script integrado de control de carrito y WhatsApp -->
-    <script src="js (1).js"></script>
+
+    <!-- Script simplificado: solo un botón PEDIR que añade al carrito y cambia de estado visual -->
+    <script>
+        function agregarProducto(nombreProducto, precio, id) {
+            // Añadir al carrito la cantidad de 1
+            if (typeof updateQty === 'function') {
+                updateQty(nombreProducto, precio, 1);
+            }
+
+            // Cambiar visualmente el botón a agregado de forma limpia
+            const btn = document.getElementById('btn-pedir-' + id);
+            if (btn) {
+                btn.innerText = '¡AGREGADO!';
+                btn.classList.add('agregado');
+                
+                // Opcional: regresa al texto original después de 1.5 segundos
+                setTimeout(() => {
+                    btn.innerText = 'PEDIR';
+                    btn.classList.remove('agregado');
+                }, 1500);
+            }
+        }
+    </script>
+    <!-- Script principal de carrito -->
+    <script src="js.js"></script>
 </body>
 </html>
