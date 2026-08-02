@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Home of Burger's | Zori Delivery</title>
+    <title>Home of Burger</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css.css">
@@ -236,14 +236,13 @@
 
     <div class="mobile-container">
         <!-- Header con botón Volver -->
-        <header class="main-header" style="position: relative;">
-            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
-        </header>
-
-        <!-- Banner del Local -->
-        <section class="promo-banner">
-            <img src="home burgers.png" alt="Banner Home of Burgers">
-        </section>
+           <!-- Banner del Local con el Botón Flotante Integrado -->
+<section class="promo-banner" style="position: relative;">
+    <a href="index.html" class="back-home-btn-float">
+        <i class="fa-solid fa-store"></i> Ver más locales
+    </a>
+    <img src="home burgers.png" alt="Banner del Local">
+</section>
 
         <!-- CATEGORÍA: HAMBURGUESAS -->
         <h2 class="section-title" id="sec-hamburguesas">HAMBURGUESAS</h2>
@@ -462,16 +461,22 @@
             <div class="product-card"><div class="prod-info"><h4>Panceta</h4><span class="prod-price">Gs. 5.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Agregado: Panceta', 5000)">PEDIR</button></div></div>
         </section>
 
-        <!-- Footer Minimalista -->
-        <footer class="social-footer">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <div class="scalat-credits">
-                Desarrollado por <span>Scalat tech</span>
-            </div>
-        </footer>
+              <!-- Footer Minimalista -->
+<footer class="social-footer">
+    <div class="social-icons" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 10px;">
+        <!-- Instagram con su color oficial -->
+        <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #E1306C; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <!-- WhatsApp con su color oficial -->
+        <a href="https://wa.me/595982309464" target="_blank" style="color: #25D366; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+    <div class="scalat-credits">
+        Desarrollado por <span>Sclat tech</span>
+    </div>
+</footer>
     </div>
 
    
