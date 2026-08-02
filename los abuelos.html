@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css.css">
     <style>
-        /* Estilos generales de la tarjeta de producto */
+        /* Estilos generales de la tarjeta de producto modificados para agrandar la imagen */
         .product-card {
             display: flex;
             background: #ffffff;
             border-radius: 12px;
-            padding: 12px;
+            padding: 14px;
             margin-bottom: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            gap: 12px;
+            gap: 14px;
             align-items: center;
         }
         .product-card .prod-info {
@@ -42,12 +42,14 @@
             color: #ff6600;
             margin-bottom: 8px;
         }
+        /* Imagen más grande y estilizada */
         .product-card img {
-            width: 90px;
-            height: 90px;
+            width: 185px;
+            height: 125px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 10px;
             flex-shrink: 0;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
 
         /* Botón PEDIR inicial */
@@ -274,8 +276,11 @@
         </header>
 
         <!-- Banner del Local -->
-        <section class="promo-banner">
-            <img src="los abuelos logo.png" alt="Banner Los Abuelos">
+        <section class="promo-banner" style="position: relative;">
+            <a href="index.html" class="back-home-btn-float">
+                <i class="fa-solid fa-store"></i> Ver más locales
+            </a>
+            <img src="los abuelos logo.png" alt="Banner del Local">
         </section>
 
         <!-- CATEGORÍA: ESPECIALIDADES Y COMIDAS -->
@@ -290,7 +295,7 @@
                     <span class="prod-price">Gs. 35.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Hambupizza-Personal" onclick="agregarProducto('Hambupizza Personal', 35000, 'Hambupizza-Personal')">PEDIR</button>
                 </div>
-                <img src="image_90bade.jpg" alt="Hambupizza personal">
+                <img src="hamburpizza los abuelos.jpg" alt="Hambupizza personal">
             </div>
 
             <!-- LOMIPIZZA PERSONAL -->
@@ -301,7 +306,7 @@
                     <span class="prod-price">Gs. 40.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Lomipizza-Personal" onclick="agregarProducto('Lomipizza Personal', 40000, 'Lomipizza-Personal')">PEDIR</button>
                 </div>
-                <img src="image_90b75b.png" alt="Lomipizza personal">
+                <img src="hamburpizza los abuelos.jpg" alt="Lomipizza personal">
             </div>
 
             <!-- ALITAS FRITAS -->
@@ -312,7 +317,7 @@
                     <span class="prod-price">Gs. 80.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Alitas-Fritas-Grande" onclick="agregarProducto('Alitas Fritas Grande', 80000, 'Alitas-Fritas-Grande')">PEDIR</button>
                 </div>
-                <img src="image_90ba83.png" alt="Alitas fritas">
+                <img src="hamburpizza los abuelos.jpg" alt="Alitas fritas">
             </div>
 
             <!-- ALITAS FRITAS PERSONAL -->
@@ -323,7 +328,7 @@
                     <span class="prod-price">Gs. 30.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Alitas-Fritas-Personal" onclick="agregarProducto('Alitas Fritas Personal', 30000, 'Alitas-Fritas-Personal')">PEDIR</button>
                 </div>
-                <img src="image_90ba83.png" alt="Alitas fritas personal">
+                <img src="hamburpizza los abuelos.jpg" alt="Alitas fritas personal">
             </div>
 
             <!-- ALITAS FRITAS MEDIANO -->
@@ -334,7 +339,7 @@
                     <span class="prod-price">Gs. 55.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Alitas-Fritas-Mediano" onclick="agregarProducto('Alitas Fritas Mediano', 55000, 'Alitas-Fritas-Mediano')">PEDIR</button>
                 </div>
-                <img src="image_90ba83.png" alt="Alitas fritas mediano">
+                <img src="hamburpizza los abuelos.jpg" alt="Alitas fritas mediano">
             </div>
 
             <!-- BOCADITO -->
@@ -345,7 +350,7 @@
                     <span class="prod-price">Gs. 110.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Bocadito-Grande" onclick="agregarProducto('Bocadito Grande', 110000, 'Bocadito-Grande')">PEDIR</button>
                 </div>
-                <img src="image_90b7b3.png" alt="Bocadito">
+                <img src="hamburpizza los abuelos.jpg" alt="Bocadito">
             </div>
 
             <!-- BOCADITO MEDIANO -->
@@ -356,7 +361,7 @@
                     <span class="prod-price">Gs. 80.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Bocadito-Mediano" onclick="agregarProducto('Bocadito Mediano', 80000, 'Bocadito-Mediano')">PEDIR</button>
                 </div>
-                <img src="image_90b7b3.png" alt="Bocadito mediano">
+                <img src="hamburpizza los abuelos.jpg" alt="Bocadito mediano">
             </div>
 
             <!-- PEPERONI -->
@@ -367,7 +372,7 @@
                     <span class="prod-price">Gs. 45.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Pizza-Peperoni" onclick="agregarProducto('Pizza Peperoni', 45000, 'Pizza-Peperoni')">PEDIR</button>
                 </div>
-                <img src="image_90b75b.png" alt="Peperoni">
+                <img src="hamburpizza los abuelos.jpg" alt="Peperoni">
             </div>
 
             <!-- PEPERONI BORDE RELLENO -->
@@ -378,7 +383,7 @@
                     <span class="prod-price">Gs. 55.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Pizza-Peperoni-Borde-Relleno" onclick="agregarProducto('Pizza Peperoni Borde Relleno', 55000, 'Pizza-Peperoni-Borde-Relleno')">PEDIR</button>
                 </div>
-                <img src="image_90b75b.png" alt="Peperoni borde relleno">
+                <img src="hamburpizza los abuelos.jpg" alt="Peperoni borde relleno">
             </div>
 
         </section>
@@ -395,7 +400,7 @@
                     <span class="prod-price">Gs. 15.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tradicional-Chico" onclick="agregarProducto('Acai Tradicional Chico', 15000, 'Acai-Tradicional-Chico')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Tradicional Chico">
+                <img src="acai practica lbos.jpg" alt="Acai Tradicional Chico">
             </div>
 
             <div class="product-card">
@@ -405,7 +410,7 @@
                     <span class="prod-price">Gs. 20.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tradicional-Mediano" onclick="agregarProducto('Acai Tradicional Mediano', 20000, 'Acai-Tradicional-Mediano')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Tradicional Mediano">
+                <img src="acai practica lbos.jpg" alt="Acai Tradicional Mediano">
             </div>
 
             <div class="product-card">
@@ -415,7 +420,7 @@
                     <span class="prod-price">Gs. 25.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tradicional-Grande" onclick="agregarProducto('Acai Tradicional Grande', 25000, 'Acai-Tradicional-Grande')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Tradicional Grande">
+                <img src="acai practica lbos.jpg" alt="Acai Tradicional Grande">
             </div>
 
             <!-- FRUTAL -->
@@ -426,7 +431,7 @@
                     <span class="prod-price">Gs. 15.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Frutal-Chico" onclick="agregarProducto('Acai Frutal Chico', 15000, 'Acai-Frutal-Chico')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Frutal Chico">
+                <img src="acai practica lbos.jpg" alt="Acai Frutal Chico">
             </div>
 
             <div class="product-card">
@@ -436,7 +441,7 @@
                     <span class="prod-price">Gs. 20.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Frutal-Mediano" onclick="agregarProducto('Acai Frutal Mediano', 20000, 'Acai-Frutal-Mediano')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Frutal Mediano">
+                <img src="acai practica lbos.jpg" alt="Acai Frutal Mediano">
             </div>
 
             <div class="product-card">
@@ -446,7 +451,7 @@
                     <span class="prod-price">Gs. 25.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Frutal-Grande" onclick="agregarProducto('Acai Frutal Grande', 25000, 'Acai-Frutal-Grande')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Frutal Grande">
+                <img src="acai practica lbos.jpg" alt="Acai Frutal Grande">
             </div>
 
             <!-- TRES LECHES -->
@@ -457,7 +462,7 @@
                     <span class="prod-price">Gs. 15.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tres-Leches-Chico" onclick="agregarProducto('Acai Tres Leches Chico', 15000, 'Acai-Tres-Leches-Chico')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Tres Leches Chico">
+                <img src="acai practica lbos.jpg" alt="Acai Tres Leches Chico">
             </div>
 
             <div class="product-card">
@@ -467,7 +472,7 @@
                     <span class="prod-price">Gs. 20.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tres-Leches-Mediano" onclick="agregarProducto('Acai Tres Leches Mediano', 20000, 'Acai-Tres-Leches-Mediano')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Tres Leches Mediano">
+                <img src="acai practica lbos.jpg" alt="Acai Tres Leches Mediano">
             </div>
 
             <div class="product-card">
@@ -477,7 +482,7 @@
                     <span class="prod-price">Gs. 25.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Tres-Leches-Grande" onclick="agregarProducto('Acai Tres Leches Grande', 25000, 'Acai-Tres-Leches-Grande')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Tres Leches Grande">
+                <img src="acai practica lbos.jpg" alt="Acai Tres Leches Grande">
             </div>
 
             <!-- PERSONALIZADO -->
@@ -488,7 +493,7 @@
                     <span class="prod-price">Gs. 18.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Personalizado-Chico" onclick="agregarProducto('Acai Personalizado Chico', 18000, 'Acai-Personalizado-Chico')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Personalizado Chico">
+                <img src="acai practica lbos.jpg" alt="Acai Personalizado Chico">
             </div>
 
             <div class="product-card">
@@ -498,7 +503,7 @@
                     <span class="prod-price">Gs. 23.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Personalizado-Mediano" onclick="agregarProducto('Acai Personalizado Mediano', 23000, 'Acai-Personalizado-Mediano')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Personalizado Mediano">
+                <img src="acai practica lbos.jpg" alt="Acai Personalizado Mediano">
             </div>
 
             <div class="product-card">
@@ -508,16 +513,20 @@
                     <span class="prod-price">Gs. 28.000</span>
                     <button class="btn-pedir-inicial" id="btn-pedir-Acai-Personalizado-Grande" onclick="agregarProducto('Acai Personalizado Grande', 28000, 'Acai-Personalizado-Grande')">PEDIR</button>
                 </div>
-                <img src="image_904ab9.png" alt="Acai Personalizado Grande">
+                <img src="acai practica lbos.jpg" alt="Acai Personalizado Grande">
             </div>
 
         </section>
 
         <!-- Footer Minimalista -->
         <footer class="social-footer">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <div class="social-icons" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 10px;">
+                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #E1306C; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/595982309464" target="_blank" style="color: #25D366; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
             </div>
             <div class="scalat-credits">
                 Desarrollado por <span>Sclat tech</span>
@@ -548,7 +557,6 @@
     <!-- Script principal de carrito modificado para asegurar el nombre del local -->
     <script src="js.js"></script>
     <script>
-        // Parche específico para forzar que el mensaje de WhatsApp diga "Los Abuelos" en esta página
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 if (typeof database !== 'undefined') {
@@ -557,7 +565,6 @@
                         whatsapp: "595982309464"
                     };
                 }
-                // Sobrescribir temporalmente la función obtenerStoreActual si está definida en js.js
                 if (typeof obtenerStoreActual === 'function') {
                     window.obtenerStoreActual = function() {
                         return {
