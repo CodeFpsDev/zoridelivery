@@ -12,16 +12,12 @@
 
     <div class="mobile-container">
         <!-- Header con botón Volver -->
-        <header class="main-header" style="position: relative;">
-            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
-            <div class="logo-container">
-            </div>
-        </header>
-
-        <!-- Banner del Local -->
-        <section class="promo-banner">
-            <img src="valhalla.webp" alt="Banner Valhalla">
-        </section>
+        <section class="promo-banner" style="position: relative;">
+    <a href="index.html" class="back-home-btn-float">
+        <i class="fa-solid fa-store"></i> Ver más locales
+    </a>
+    <img src="valhalla.webp" alt="Banner del Local">
+</section>
 
         <!-- CATEGORÍA: HAMBURGUESAS Y ÁRABES -->
         <h2 class="section-title">HAMBURGUESAS Y ÁRABES</h2>
@@ -149,7 +145,7 @@
 
             <!-- CHEDDAR -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1552763443-158947082db3?w=200" alt="Extra Cheddar">
+                <img src="hamburpizza los abuelos.jpg" alt="Extra Cheddar">
                 <div class="prod-info">
                     <h4>Agregado de Cheddar</h4>
                     <span class="prod-price">Gs. 3.000</span>
@@ -159,7 +155,7 @@
 
             <!-- PEPINILLO -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1604964432806-254d07c11f32?w=200" alt="Extra Pepinillo">
+                <img src="hamburpizza los abuelos.jpg" alt="Extra Pepinillo">
                 <div class="prod-info">
                     <h4>Agregado de Pepinillo</h4>
                     <span class="prod-price">Gs. 3.000</span>
@@ -199,16 +195,22 @@
 
         </section>
 
-        <!-- Footer Minimalista -->
-        <footer class="social-footer">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <div class="scalat-credits">
-                Desarrollado por <span>Sclat tech</span>
-            </div>
-        </footer>
+              <!-- Footer Minimalista -->
+<footer class="social-footer">
+    <div class="social-icons" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 10px;">
+        <!-- Instagram con su color oficial -->
+        <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #E1306C; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <!-- WhatsApp con su color oficial -->
+        <a href="https://wa.me/595982309464" target="_blank" style="color: #25D366; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+    <div class="scalat-credits">
+        Desarrollado por <span>Sclat tech</span>
+    </div>
+</footer>
     </div>
     <!-- Script integrado directamente para descartar problemas de carga -->
     <script src="js.js"></script>
