@@ -767,3 +767,27 @@ body {
     background: #25d366;
     box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
 }
+.back-home-btn-float {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    z-index: 10;
+    transition: 0.2s;
+}
+
+.back-home-btn-float:hover {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
