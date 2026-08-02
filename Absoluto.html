@@ -80,15 +80,13 @@
 
     <div class="mobile-container" style="margin-top: 0; padding-top: 0;">
         <!-- Header con botón Volver transparente -->
-        <header class="main-header">
-            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
-            <div class="logo-container"></div>
-        </header>
-
-        <!-- Banner del Local (Solo el logo) -->
-        <section class="promo-banner" style="border: none; margin-top: -2px;">
-            <img src="absoluto.webp" alt="Banner Absoluto Food" style="width: 100%; display: block; border: none; outline: none;">
-        </section>
+         <!-- Banner del Local con el Botón Flotante Integrado -->
+<section class="promo-banner" style="position: relative;">
+    <a href="index.html" class="back-home-btn-float">
+        <i class="fa-solid fa-store"></i> Ver más locales
+    </a>
+    <img src="absoluto.webp" alt="Banner del Local">
+</section>
         
         <!-- ==================== SECCIÓN COMIDAS ==================== -->
 
@@ -360,17 +358,22 @@
             <div class="product-card"><div class="prod-info"><h4>Vodka</h4><span class="prod-price">Gs. 15.000</span><button class="btn-pedir" onclick="agregarAlCarrito('Shot de Vodka', 15000)">AGREGAR SHOT</button></div></div>
         </section>
 
-        <!-- Footer Minimalista -->
-        <footer class="social-footer">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/595982309464" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <div class="scalat-credits">
-                Desarrollado por <span>Sclat tech</span>
-            </div>
-        </footer>
+       <!-- Footer Minimalista -->
+<footer class="social-footer">
+    <div class="social-icons" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 10px;">
+        <!-- Instagram con su color oficial -->
+        <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #E1306C; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <!-- WhatsApp con su color oficial -->
+        <a href="https://wa.me/595982309464" target="_blank" style="color: #25D366; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
     </div>
+    <div class="scalat-credits">
+        Desarrollado por <span>Sclat tech</span>
+    </div>
+</footer>
 
     <!-- BOTÓN FLOTANTE DEL CARRITO -->
     <div id="carrito-flotant" style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; font-weight: bold; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; align-items: center; gap: 10px;" onclick="abrirModalCarrito()">
