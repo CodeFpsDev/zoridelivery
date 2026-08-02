@@ -67,17 +67,41 @@
 
         .cart-total-section { display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; border-top: 1px solid #eee; padding-top: 10px; margin-bottom: 15px; }
         .btn-enviar-pedido { background-color: #25d366; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .back-home-btn-float {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    z-index: 10;
+    transition: 0.2s;
+}
+
+.back-home-btn-float:hover {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
     </style>
 </head>
 <body>
     <div class="mobile-container">
-        <!-- Header con el Logo del Local centrado (sin botón de volver) -->
-       
-
-        <!-- Banner del Local -->
-        <section class="promo-banner">
-            <img src="Açaí berry.webp" alt="Banner de Açaí Berry">
-        </section>
+       <!-- Banner del Local con el Botón Flotante Integrado -->
+<section class="promo-banner" style="position: relative;">
+    <a href="index.html" class="back-home-btn-float">
+        <i class="fa-solid fa-store"></i> Ver más locales
+    </a>
+    <img src="Açaí berry.webp" alt="Banner del Local">
+</section>
 
         <!-- CATEGORÍA: CAMADINHAS TRADICIONALES -->
         <h2 class="section-title">CAMADINHAS</h2>
@@ -299,17 +323,22 @@
             <div class="aggregate-item"><div class="info"><strong>Pasta Brownie/Cookies/Castaña</strong><span class="price">Gs. 10.000</span></div><button class="agregado-btn" onclick="agregarConTextoAgregado(this, 'Extra Pasta Brownie/Castaña', 10000)">+ Pedir</button></div>
         </section>
 
-        <!-- Footer Minimalista -->
-        <footer class="social-footer">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/acaiiberry_" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/595975737860" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-            <div class="scalat-credits">
-                Desarrollado por <span>Sclat tech</span>
-            </div>
-        </footer>
+              <!-- Footer Minimalista -->
+<footer class="social-footer">
+    <div class="social-icons" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 10px;">
+        <!-- Instagram con su color oficial -->
+        <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #E1306C; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <!-- WhatsApp con su color oficial -->
+        <a href="https://wa.me/595982309464" target="_blank" style="color: #25D366; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
     </div>
+    <div class="scalat-credits">
+        Desarrollado por <span>Sclat tech</span>
+    </div>
+</footer>
 
     <!-- Botón Flotante del Carrito -->
     <button class="cart-float-btn" onclick="toggleCart()">
