@@ -145,20 +145,26 @@
         <section class="stores-grid" id="stores-container">
         </section>
 
-        <!-- Footer ultra minimalista con Instagram, WhatsApp y Sclat -->
-        <footer class="social-footer">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://wa.me/595982309464" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-            </div>
-            <div class="scalat-credits">
-                Desarrollado por <span>Sclat tech</span>
-            </div>
-        </footer>
+       <!-- Footer Minimalista -->
+<footer class="social-footer">
+    <div class="social-icons" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 10px;">
+        <!-- Instagram con su color oficial -->
+        <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #E1306C; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <!-- WhatsApp con su color oficial -->
+        <a href="https://wa.me/595982309464" target="_blank" style="color: #25D366; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <!-- Botón de Reseña Anónima en Azul Moderno -->
+        <button onclick="abrirModalResena()" style="background: #0284c7; color: white; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);">
+            ⭐ Reseña Anónima
+        </button>
+    </div>
+    <div class="scalat-credits">
+        Desarrollado por <span>Sclat tech</span>
+    </div>
+</footer>
     </div>
 
     <script>
@@ -206,6 +212,7 @@
             { id: "La Estancion", nombre: "La Estacion", img: "la estacion.web.jpeg", url: "la estacion.html" }, 
             { id: "Porkys", nombre: "Porkys", img: "porkis.web.jpeg", url: "Porkys.html" },
             { id: "La Peña", nombre: "La Peña", img: "la peña-8.png", url: "la Peña.html" },
+            { id: "Acai Franco", nombre: "Acai Franco", img: "acai franco web.jpeg", url: "acai franco.html" },
 
            ];
 
@@ -227,7 +234,7 @@
             });
 
             // Agregar las 2 tarjetas de "Agrega tu local" al final de la grilla
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 2; i++) {
                 container.innerHTML += `
                     <div class="store-card add-store" onclick="contactarWhatsApp()">
                         <i class="fa-solid fa-store-slash"></i>
