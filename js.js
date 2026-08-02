@@ -50,6 +50,14 @@ const database = {
         productos: [
             { id: "rc1", nombre: "Rolling Burger", descripcion: "Medallón smash, cheddar, pepinillos y aderezo especial.", precio: 28000, img: "https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?w=200" }
         ]
+    },
+    "los abuelos": {
+        nombre: "Los Abuelos",
+        banner: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600",
+        whatsapp: "595982309464", // Cambia este número si es exclusivo de Los Abuelos
+        productos: [
+            { id: "ab1", nombre: "Especial Los Abuelos", descripcion: "Plato o producto destacado de la casa.", precio: 35000, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200" }
+        ]
     }
 };
 
@@ -276,7 +284,7 @@ function sendWhatsApp() {
     const store = obtenerStoreActual();
 
     let message = `Nuevo Pedido\n\n`;
-    message += `Hola Zory, quiero hacer un pedido de ${store.nombre}:\n\n`;
+    message += `Hola Zory, quiero hacer un pedido de *${store.nombre}*:\n\n`;
     let totalPrice = 0;
 
     for (let item in cart) {
@@ -292,8 +300,6 @@ function sendWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${store.whatsapp}?text=${encodedMessage}`, '_blank');
 }
-// 1. Inyectar automáticamente la pantalla de carga con tu logo
-// Reemplazá desde aquí hasta el final de tu archivo js.js:
 
 // 1. Inyectar automáticamente la pantalla de carga con tu logo
 function crearPantallaCarga() {
@@ -353,8 +359,6 @@ window.addEventListener('online', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    crearPantallaCarga(); // <-- Acá ya lo activamos por defecto al iniciar
+    crearPantallaCarga(); 
     initStore();
 });
-
-document.addEventListener('DOMContentLoaded', initStore);
