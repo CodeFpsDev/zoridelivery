@@ -1,5 +1,3 @@
-// js.js - Proyecto Zory App (Versión Universal y Segura)
-
 const database = {
     "burgerland": {
         nombre: "Burgerland",
@@ -54,12 +52,46 @@ const database = {
     "los abuelos": {
         nombre: "Los Abuelos",
         banner: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600",
-        whatsapp: "595982309464", // Cambia este número si es exclusivo de Los Abuelos
+        whatsapp: "595982309464",
         productos: [
             { id: "ab1", nombre: "Especial Los Abuelos", descripcion: "Plato o producto destacado de la casa.", precio: 35000, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200" }
         ]
+    },
+    "la estacion": {
+        nombre: "La Estación",
+        banner: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "est1", nombre: "Plato de la Estación", descripcion: "Especialidad de la casa.", precio: 35000, img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=200" }
+        ]
+    },
+    "porkis": {
+        nombre: "Porkis",
+        banner: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "pork1", nombre: "Especialidad Porkis", descripcion: "Lo mejor en cerdo.", precio: 35000, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200" }
+        ]
+    },
+    "la peña": {
+        nombre: "La Peña",
+        banner: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "pen1", nombre: "Plato Típico La Peña", descripcion: "Especialidad tradicional.", precio: 40000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" }
+        ]
+    },
+    "acai franco": {
+        nombre: "acai franco",
+        banner: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "acai1", nombre: "Bowl Acai Franco", descripcion: "Açaí puro, banana, granolas y miel.", precio: 25000, img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=200" }
+        ]
     }
+    
 };
+
 
 let cart = {};
 
@@ -290,12 +322,13 @@ function sendWhatsApp() {
     for (let item in cart) {
         let itemTotal = cart[item].qty * cart[item].price;
         totalPrice += itemTotal;
-        message += `- ${cart[item].qty}x ${item} (Gs. ${itemTotal.toLocaleString('es-PY')})\n`;
+        // Aquí ajustamos para que el formato muestre la cantidad primero: ej. "- 2x Hamburguesa"
+        message += `- ${cart[item].qty}: ${item} (Gs. ${itemTotal.toLocaleString('es-PY')})\n`;
     }
 
     message += `\nTotal: Gs. ${totalPrice.toLocaleString('es-PY')}\n\n`;
     message += `A nombre de: ${nombreCliente}\n`;
-    message += `(Envío mi ubicación actual desde aquí)`;
+    message += `(te mando mi ubicación en tiempo real)`;
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${store.whatsapp}?text=${encodedMessage}`, '_blank');
@@ -341,8 +374,8 @@ window.addEventListener('offline', () => {
     const subText = document.getElementById('loader-sub');
     
     if (loader && titleText && subText) {
-        titleText.innerText = "¡Sin conexión a internet!";
-        subText.innerText = "Por favor, verifica tu red para continuar.";
+        titleText.innerText = "¡Sin conexión!";
+        subText.innerText = "OOPS.";
         loader.style.display = 'flex';
         loader.style.opacity = '1';
     }
@@ -362,3 +395,85 @@ document.addEventListener('DOMContentLoaded', () => {
     crearPantallaCarga(); 
     initStore();
 });
+// Inyectar la estructura del modal de reseña anónima
+function crearModalResenaUI() {
+    if (!document.getElementById('modalResenaAnonima')) {
+        const modalResenaHTML = `
+            <div id="modalResenaAnonima" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 2000; font-family: 'Poppins', sans-serif; padding: 16px; box-sizing: border-box;">
+                <div style="background: #ffffff; width: 100%; max-width: 450px; border-radius: 20px; padding: 24px; box-sizing: border-box; color: #1e293b; box-shadow: 0 20px 50px rgba(0,0,0,0.3); position: relative;">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <h3 style="margin:0; font-size: 18px; font-weight: 700; color: #0f172a;">Dejanos tu Reseña Anónima 🤫</h3>
+                        <button onclick="cerrarModalResena()" style="background: transparent; border: none; color: #64748b; width: 32px; height: 32px; border-radius: 50%; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">&times;</button>
+                    </div>
+
+                    <div style="border-bottom: 1px solid #e2e8f0; margin-bottom: 16px;"></div>
+
+                    <form id="formResenaAnonima" onsubmit="enviarResenaEmail(event)">
+                        <!-- Input oculto para que llegue a tu correo -->
+                        <input type="hidden" name="to_email" value="zorydelivery@gmail.com">
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px;">Tu mensaje o sugerencia:</label>
+                            <textarea id="inputTextoResena" name="mensaje" placeholder="Escribí aquí de forma anónima..." rows="4" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; box-sizing: border-box; font-family: 'Poppins', sans-serif; outline: none; font-size: 14px; resize: none;" required></textarea>
+                        </div>
+
+                        <button type="submit" id="btnEnviarResena" style="background: #ff7300; color: white; border: none; padding: 14px; width: 100%; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 15px; box-shadow: 0 4px 15px rgba(255,115,0,0.3); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            ✉️ Enviar Reseña Anónima
+                        </button>
+                    </form>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalResenaHTML);
+    }
+}
+
+function abrirModalResena() {
+    crearModalResenaUI();
+    const modal = document.getElementById('modalResenaAnonima');
+    if (modal) modal.style.display = 'flex';
+}
+
+function cerrarModalResena() {
+    const modal = document.getElementById('modalResenaAnonima');
+    if (modal) modal.style.display = 'none';
+}
+
+async function enviarResenaEmail(event) {
+    event.preventDefault();
+    const texto = document.getElementById('inputTextoResena').value.trim();
+    const boton = document.getElementById('btnEnviarResena');
+
+    if (!texto) return;
+
+    boton.innerText = "Enviando...";
+    boton.disabled = true;
+
+    try {
+        const response = await fetch("https://formsubmit.co/ajax/zorydelivery@gmail.com", {
+            method: "POST",
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                _subject: "🤫 Nueva Reseña Anónima - Zory Delivery",
+                mensaje: texto
+            })
+        });
+
+        if (response.ok) {
+            alert("¡Muchas gracias! Tu reseña anónima fue enviada con éxito.");
+            document.getElementById('inputTextoResena').value = '';
+            cerrarModalResena();
+        } else {
+            alert("Hubo un error al enviar. Intentá de nuevo.");
+        }
+    } catch (error) {
+        alert("Error de conexión. Verificá tu internet.");
+    } finally {
+        boton.innerText = "✉️ Enviar Reseña Anónima";
+        boton.disabled = false;
+    }
+}
