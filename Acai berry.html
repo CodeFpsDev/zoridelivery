@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Açaí Berry | Entrega Zori</title>
+    <title>Açaí Berry</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -13,9 +12,9 @@
         body { background-color: #f4f4f4; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
         .mobile-container { width: 100%; max-width: 480px; background: #ffffff; min-height: 100vh; position: relative; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding-bottom: 80px; }
         
-        /* Header y Banner */
-        .main-header { display: flex; align-items: center; padding: 10px 15px; background: #fff; position: relative; }
-        .back-btn { background: none; border: none; font-size: 18px; cursor: pointer; color: #333; }
+        /* Header y Logo */
+        .main-header { display: flex; align-items: center; justify-content: center; padding: 10px 15px; background: #fff; position: relative; border-bottom: 1px solid #eee; }
+        .header-logo { height: 40px; object-fit: contain; }
         .promo-banner img { width: 100%; max-height: 180px; object-fit: cover; display: block; }
         
         /* Secciones y Títulos */
@@ -72,13 +71,10 @@
 </head>
 <body>
     <div class="mobile-container">
-        <!-- Header con botón Volver -->
-        <header class="main-header">
-            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
-            <div class="logo-container"></div>
-        </header>
+        <!-- Header con el Logo del Local centrado (sin botón de volver) -->
+       
 
-        <!-- Banner del Local (Ajustado) -->
+        <!-- Banner del Local -->
         <section class="promo-banner">
             <img src="Açaí berry.webp" alt="Banner de Açaí Berry">
         </section>
@@ -348,7 +344,7 @@
         </div>
     </div>
 
-    <!-- Lógica del Carrito integrada exclusivamente para este local -->
+    <!-- Lógica del Carrito integrada -->
     <script>
         let carrito = [];
 
@@ -424,7 +420,7 @@
                 return;
             }
 
-            let mensaje = `Hola! Quisiera realizar el siguiente pedido:\n\n*Cliente:* ${nombreCliente}\n\n*Detalle:*`;
+            let mensaje = `Hola! Quisiera realizar un pedido para *Açaí Berry*:\n\n*Cliente:* ${nombreCliente}\n\n*Detalle:*`;
             let total = 0;
 
             carrito.forEach(prod => {
@@ -434,7 +430,7 @@
 
             mensaje += `\n\n*Total a pagar: Gs. ${total.toLocaleString()}*`;
 
-            let telefono = "595982309464";
+            let telefono = "595975737860";
             let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
