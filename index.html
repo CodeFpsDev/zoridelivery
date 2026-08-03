@@ -145,26 +145,113 @@
         <section class="stores-grid" id="stores-container">
         </section>
 
-       <!-- Footer Minimalista -->
-<footer class="social-footer">
-    <div class="social-icons" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 10px;">
-        <!-- Instagram con su color oficial -->
-        <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #E1306C; font-size: 24px; text-decoration: none;">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <!-- WhatsApp con su color oficial -->
-        <a href="https://wa.me/595982309464" target="_blank" style="color: #25D366; font-size: 24px; text-decoration: none;">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <!-- Botón de Reseña Anónima en Azul Moderno -->
-        <button onclick="abrirModalResena()" style="background: #0284c7; color: white; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);">
-            ⭐ Reseña Anónima
-        </button>
+<!-- Footer Minimalista -->
+    <footer class="social-footer" style="padding: 20px 0; text-align: center;">
+        <!-- Redes Sociales solo con iconos -->
+        <div class="social-icons" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 15px;">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/595982309464" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <!-- Botones tipo píldora para Dejar reseña y Quiero ser delivery -->
+        <div class="footer-actions" style="display: flex; gap: 10px; justify-content: center; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+            
+            <!-- Botón Dejar reseña -->
+            <button onclick="abrirModalReseña()" style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 22px; border: 1px solid #ccc; border-radius: 50px; background: #ffffff; color: #333333; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.2s;">
+                Reseña Anónima
+            </button>
+
+            <!-- Botón Quiero ser delivery -->
+            <a href="https://wa.me/595982309464?text=Hola,%20estoy%20interesado%20en%20trabajar%20con%20ustedes%20como%20delivery." target="_blank" style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 22px; border: 1px solid #ccc; border-radius: 50px; background: #ffffff; color: #333333; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                Quiero ser delivery
+            </a>
+        </div>
+
+        <div class="scalat-credits" style="font-size: 0.8rem; color: #666;">
+            Desarrollado por <code><span>Sclat tech</span></code>
+        </div>
+    </footer>
+
+    <!-- Ventana Modal Anónima con Envío Invisible -->
+    <div id="modalReseña" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: #ffffff; padding: 25px; border-radius: 15px; width: 90%; max-width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-family: 'Poppins', sans-serif; text-align: left; position: relative;">
+            
+            <!-- Contenedor del Formulario -->
+            <div id="formContainer">
+                <h3 style="margin-top: 0; margin-bottom: 5px; color: #333; font-size: 1.1rem; text-align: center;">Dejanos tu reseña</h3>
+                <p style="margin-top: 0; margin-bottom: 15px; color: #777; font-size: 0.8rem; text-align: center;">100% anónima</p>
+                
+                <form id="reseñaForm" onsubmit="enviarReseñaAnonima(event)" style="display: flex; flex-direction: column; gap: 12px;">
+                    <input type="hidden" name="_subject" value="💬 Nueva Reseña Anónima - Zory Delivery">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <textarea id="mensajeReseña" name="mensaje" rows="4" placeholder="Escribe tu comentario o reseña anónima aquí..." required style="padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; resize: none;"></textarea>
+                    
+                    <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 5px;">
+                        <button type="button" onclick="cerrarModalReseña()" style="padding: 8px 15px; border: none; border-radius: 8px; background: #e0e0e0; color: #333; cursor: pointer; font-weight: 600;">Cancelar</button>
+                        <button type="submit" id="btnEnviar" style="padding: 8px 20px; border: none; border-radius: 8px; background: #25D366; color: #fff; cursor: pointer; font-weight: 600;">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Mensaje de Éxito Oculto (Aparece al enviar) -->
+            <div id="mensajeExito" style="display: none; text-align: center; padding: 20px 0;">
+                <div style="font-size: 3rem; color: #25D366; margin-bottom: 10px;">✓</div>
+                <h3 style="color: #333; margin-bottom: 10px; font-size: 1.2rem;">¡Reseña enviada con éxito!</h3>
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">Muchas gracias por tu comentario.</p>
+                <button onclick="cerrarModalReseña()" style="padding: 8px 25px; border: none; border-radius: 8px; background: #25D366; color: #fff; cursor: pointer; font-weight: 600;">Aceptar</button>
+            </div>
+            
+            <button onclick="cerrarModalReseña()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #888;">&times;</button>
+        </div>
     </div>
-    <div class="scalat-credits">
-        Desarrollado por <span>Sclat tech</span>
-    </div>
-</footer>
+
+    <!-- Script para manejo del modal y envío sin recargar página -->
+    <script>
+        function abrirModalReseña() {
+            document.getElementById('formContainer').style.display = 'block';
+            document.getElementById('mensajeExito').style.display = 'none';
+            document.getElementById('mensajeReseña').value = '';
+            document.getElementById('modalReseña').style.display = 'flex';
+        }
+
+        function cerrarModalReseña() {
+            document.getElementById('modalReseña').style.display = 'none';
+        }
+
+        function enviarReseñaAnonima(event) {
+            event.preventDefault();
+            const form = document.getElementById('reseñaForm');
+            const formData = new FormData(form);
+            const btnEnviar = document.getElementById('btnEnviar');
+            
+            btnEnviar.innerText = 'Enviando...';
+            btnEnviar.disabled = true;
+
+            fetch('https://formsubmit.co/ajax/zorydelivery@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('formContainer').style.display = 'none';
+                document.getElementById('mensajeExito').style.display = 'block';
+                btnEnviar.innerText = 'Enviar';
+                btnEnviar.disabled = false;
+            })
+            .catch(error => {
+                alert('Hubo un error al enviar. Inténtalo de nuevo.');
+                btnEnviar.innerText = 'Enviar';
+                btnEnviar.disabled = false;
+            });
+        }
+    </script>
     </div>
 
     <script>
@@ -205,14 +292,14 @@
             { id: "Valhalla Burger", nombre: "Valhalla Burger", img: "valhalla.webp", url: "Valhalla.html" },
             { id: "Rolling Cook.html", nombre: "Rolling Cook", img: "rolling cook.webp", url: "Rolling Cook.html" },
             { id: "Absoluto.html", nombre: "Absoluto", img: "absoluto.webp", url: "Absoluto.html" },
-            { id: "home burgers.png", nombre: "Home Burger", img: "home burgers.png", url: "MIJAL.html" },
-            { id: "Acai berry", nombre: "Açai berry", img: "Açaí berry.webp", url: "Acai berry.html" },
+            { id: "home burgers.png", nombre: "MIJAL", img: "home burgers.png", url: "MIJAL.html" },
+            { id: "Acai berry", nombre: "Acai berry", img: "Açaí berry.webp", url: "Acai berry.html" },
             { id: "Bacoa burger", nombre: "Bacoa burger", img: "bacoa.webp", url: "Bacoa burger.html" },
-            { id: "Los Abuelos", nombre: "Los Abuelos", img: "los abuelos logo.png", url: "los abuelos.html" },
+            { id: "Los Abuelos", nombre: "los abuelos", img: "los abuelos logo.png", url: "los abuelos.html" },
             { id: "La Estancion", nombre: "La Estacion", img: "la estacion.web.jpeg", url: "la estacion.html" }, 
-            { id: "Porkys", nombre: "Porki’s", img: "porkis.web.jpeg", url: "Porkys.html" },
+            { id: "Porkys", nombre: "Porkys", img: "porkis.web.jpeg", url: "Porkys.html" },
             { id: "La Peña", nombre: "La Peña", img: "la peña-8.png", url: "la Peña.html" },
-            { id: "Acai Francol", nombre: "Açai Francol", img: "acai franco web.jpeg", url: "acai franco.html" },
+            { id: "Acai Franco", nombre: "Acai Franco", img: "acai franco web.jpeg", url: "acai franco.html" },
 
            ];
 
