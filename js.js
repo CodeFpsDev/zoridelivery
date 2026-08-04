@@ -8,7 +8,25 @@ const database = {
             { id: "b2", nombre: "Bacon Monster", descripcion: "Triple carne, triple cheddar y mucha panceta.", precio: 6800, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" }
         ]
     },
-    "açaí berry": {
+    "bacoa burger": {
+        nombre: "Bacoa",
+        banner: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "bac1", nombre: "Bacoa Clásica", descripcion: "Medallón de carne, queso cheddar, lechuga y tomate.", precio: 28000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
+            { id: "bac2", nombre: "Bacoa Doble Bacon", descripcion: "Doble carne, doble cheddar y abundante panceta crujiente.", precio: 35000, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" }
+        ]
+    },
+    "porkys": {
+        nombre: "Porkys",
+        banner: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "pork1", nombre: "Burger de Cerdo Porkys", descripcion: "Medallón de cerdo desmenuzado con barbacoa y cheddar.", precio: 32000, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200" },
+            { id: "pork2", nombre: "Costillar Porkis", descripcion: "Porción de costicitas de cerdo con salsa especial.", precio: 45000, img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=200" }
+        ]
+    },
+    "acai berry": {
         nombre: "Açaí Berry",
         banner: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600",
         whatsapp: "595982309464",
@@ -25,8 +43,8 @@ const database = {
             { id: "abs1", nombre: "Pizza Mozzarella", descripcion: "Salsa casera, abundante mozzarella y orégano.", precio: 40000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" }
         ]
     },
-    "Home Burger": {
-        nombre: "Home Burger",
+    "home of burger": {
+        nombre: "Home Of Burger",
         banner: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
         whatsapp: "595982309464",
         productos: [
@@ -65,14 +83,6 @@ const database = {
             { id: "est1", nombre: "Plato de la Estación", descripcion: "Especialidad de la casa.", precio: 35000, img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=200" }
         ]
     },
-    "porkis": {
-        nombre: "Porkis",
-        banner: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600",
-        whatsapp: "595982309464",
-        productos: [
-            { id: "pork1", nombre: "Especialidad Porkis", descripcion: "Lo mejor en cerdo.", precio: 35000, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200" }
-        ]
-    },
     "la peña": {
         nombre: "La Peña",
         banner: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600",
@@ -89,31 +99,31 @@ const database = {
             { id: "acai1", nombre: "Bowl Acai Franco", descripcion: "Açaí puro, banana, granolas y miel.", precio: 25000, img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=200" }
         ]
     }
-    
 };
-
 
 let cart = {};
 
 function obtenerStoreActual() {
-    let tituloPage = document.title.toLowerCase().trim();
-    for (let key in database) {
-        if (tituloPage.includes(key)) {
-            return database[key];
-        }
-    }
-
+    let tituloPage = document.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
     let rawPath = window.location.pathname.split("/").pop().toLowerCase().replace(".html", "").replace(/[-_]/g, " ");
+
+    // 1. Buscar coincidencia exacta o parcial normalizada en las keys de la base de datos
     for (let key in database) {
-        if (rawPath.includes(key)) {
+        let normalizedKey = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+        if (tituloPage.includes(normalizedKey) || rawPath.includes(normalizedKey)) {
             return database[key];
         }
     }
 
-    if (document.body.innerHTML.toLowerCase().includes("burgerland")) {
-        return database["burgerland"];
+    // 2. Buscar si algún nombre de tienda coincide dentro del título o la URL
+    for (let key in database) {
+        let nombreTienda = database[key].nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        if (tituloPage.includes(nombreTienda) || rawPath.includes(nombreTienda)) {
+            return database[key];
+        }
     }
 
+    // 3. Fallback por defecto si no encuentra coincidencia
     return database["burgerland"];
 }
 
@@ -189,7 +199,6 @@ function crearEstructuraCarritoUI() {
                         <input type="text" id="inputNombreCliente" placeholder="Nombre" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; box-sizing: border-box; font-family: 'Poppins', sans-serif; outline: none; font-size: 15px;">
                     </div>
                     
-                    <!-- Recordatorio de ubicación -->
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 10px; font-size: 13px; color: #475569; text-align: center; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">
                         📍 <strong>Recordatorio:</strong> Envía tu ubicación actual desde el chat
                     </div>
