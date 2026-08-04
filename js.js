@@ -25,7 +25,7 @@ const database = {
             { id: "abs1", nombre: "Pizza Mozzarella", descripcion: "Salsa casera, abundante mozzarella y orégano.", precio: 40000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" }
         ]
     },
-    "home burger": {
+    "Home Burger": {
         nombre: "Home Burger",
         banner: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
         whatsapp: "595982309464",
@@ -81,8 +81,8 @@ const database = {
             { id: "pen1", nombre: "Plato Típico La Peña", descripcion: "Especialidad tradicional.", precio: 40000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" }
         ]
     },
-    "acai franco": {
-        nombre: "acai franco",
+    "acai francol": {
+        nombre: "Açai Francol",
         banner: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600",
         whatsapp: "595982309464",
         productos: [
@@ -322,7 +322,6 @@ function sendWhatsApp() {
     for (let item in cart) {
         let itemTotal = cart[item].qty * cart[item].price;
         totalPrice += itemTotal;
-        // Aquí ajustamos para que el formato muestre la cantidad primero: ej. "- 2x Hamburguesa"
         message += `- ${cart[item].qty}: ${item} (Gs. ${itemTotal.toLocaleString('es-PY')})\n`;
     }
 
@@ -334,7 +333,6 @@ function sendWhatsApp() {
     window.open(`https://wa.me/${store.whatsapp}?text=${encodedMessage}`, '_blank');
 }
 
-// 1. Inyectar automáticamente la pantalla de carga con tu logo
 function crearPantallaCarga() {
     if (!document.getElementById('zory-loader')) {
         const loaderHTML = `
@@ -355,7 +353,6 @@ function crearPantallaCarga() {
     }
 }
 
-// 3. Controladores de carga y conexión (al final del archivo)
 window.addEventListener('load', () => {
     const loader = document.getElementById('zory-loader');
     if (loader) {
@@ -395,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     crearPantallaCarga(); 
     initStore();
 });
-// Inyectar la estructura del modal de reseña anónima
+
 function crearModalResenaUI() {
     if (!document.getElementById('modalResenaAnonima')) {
         const modalResenaHTML = `
@@ -410,7 +407,6 @@ function crearModalResenaUI() {
                     <div style="border-bottom: 1px solid #e2e8f0; margin-bottom: 16px;"></div>
 
                     <form id="formResenaAnonima" onsubmit="enviarResenaEmail(event)">
-                        <!-- Input oculto para que llegue a tu correo -->
                         <input type="hidden" name="to_email" value="zorydelivery@gmail.com">
                         
                         <div style="margin-bottom: 16px;">
