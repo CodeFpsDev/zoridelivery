@@ -98,16 +98,52 @@ const database = {
         productos: [
             { id: "acai1", nombre: "Bowl Acai Franco", descripcion: "Açaí puro, banana, granolas y miel.", precio: 25000, img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=200" }
         ]
+    },
+    "restaurant mysko": {
+        nombre: "Posada Mysko",
+        banner: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "mys1", nombre: "Plato Especial Mysko", descripcion: "Especialidad de la casa.", precio: 35000, img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200" }
+        ]
+    },
+    "lo de capi": {
+        nombre: "Lo De Capi",
+        banner: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "capi1", nombre: "Especial Lo De Capi", descripcion: "Plato o hamburguesa destacada de la casa.", precio: 35000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
+            { id: "capi2", nombre: "Lomito Lo De Capi", descripcion: "Lomito completo con pan casero y papas fritas.", precio: 40000, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" }
+        ]
     }
 };
 
+
 let cart = {};
+
+// CONFIGURACIÓN DE FIREBASE (Asegúrate de incluir los SDKs compat en tu HTML principal)
+const firebaseConfig = {
+    apiKey: "AIzaSyCoIVVXK3csLvtg9E7wDCjGt--fam_szzQ",
+    authDomain: "admin-de-zory.firebaseapp.com",
+    projectId: "admin-de-zory",
+    storageBucket: "admin-de-zory.firebasestorage.app",
+    messagingSenderId: "199468715480",
+    appId: "1:199468715480:web:2a7a188258237c0b5db6ad",
+    measurementId: "G-WKGL0G4WK4"
+};
+
+// Inicializar base de datos de Firebase si está cargado el SDK
+if (typeof firebase !== 'undefined') {
+    try {
+        firebase.initializeApp(firebaseConfig);
+    } catch (e) { console.error(e); }
+}
+const db = (typeof firebase !== 'undefined' && firebase.firestore) ? firebase.firestore() : null;
 
 function obtenerStoreActual() {
     let tituloPage = document.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
     let rawPath = window.location.pathname.split("/").pop().toLowerCase().replace(".html", "").replace(/[-_]/g, " ");
 
-    // 1. Buscar coincidencia exacta o parcial normalizada en las keys de la base de datos
     for (let key in database) {
         let normalizedKey = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
         if (tituloPage.includes(normalizedKey) || rawPath.includes(normalizedKey)) {
@@ -115,7 +151,6 @@ function obtenerStoreActual() {
         }
     }
 
-    // 2. Buscar si algún nombre de tienda coincide dentro del título o la URL
     for (let key in database) {
         let nombreTienda = database[key].nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         if (tituloPage.includes(nombreTienda) || rawPath.includes(nombreTienda)) {
@@ -123,7 +158,6 @@ function obtenerStoreActual() {
         }
     }
 
-    // 3. Fallback por defecto si no encuentra coincidencia
     return database["burgerland"];
 }
 
@@ -324,15 +358,43 @@ function sendWhatsApp() {
 
     const store = obtenerStoreActual();
 
-    let message = `Nuevo Pedido\n\n`;
-    message += `Hola Zory, quiero hacer un pedido de *${store.nombre}*:\n\n`;
+    let productosArray = [];
     let totalPrice = 0;
 
     for (let item in cart) {
         let itemTotal = cart[item].qty * cart[item].price;
         totalPrice += itemTotal;
-        message += `- ${cart[item].qty}: ${item} (Gs. ${itemTotal.toLocaleString('es-PY')})\n`;
+        productosArray.push({
+            cantidad: cart[item].qty,
+            nombre: item
+        });
     }
+
+    // Guardar pedido automáticamente en Firebase Firestore para el panel de administración
+    if (db) {
+        db.collection("pedidos").add({
+            cliente: nombreCliente,
+            tienda: store.nombre,
+            productos: productosArray,
+            total: totalPrice,
+            estado: "pendiente",
+            hora: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        })
+        .then(() => {
+            console.log("Pedido sincronizado con éxito al panel Admin de Zory");
+        })
+        .catch((error) => {
+            console.error("Error al registrar pedido en Firebase:", error);
+        });
+    }
+
+    // Armar mensaje de WhatsApp
+    let message = `Nuevo Pedido\n\n`;
+    message += `Hola Zory, quiero hacer un pedido de *${store.nombre}*:\n\n`;
+    
+    productosArray.forEach(p => {
+        message += `- ${p.cantidad}: ${p.nombre}\n`;
+    });
 
     message += `\nTotal: Gs. ${totalPrice.toLocaleString('es-PY')}\n\n`;
     message += `A nombre de: ${nombreCliente}\n`;
@@ -347,8 +409,8 @@ function crearPantallaCarga() {
         const loaderHTML = `
             <div id="zory-loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease; font-family: 'Poppins', sans-serif;">
                 <img src="logo png.png" alt="Zory Logo" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 20px; animation: pulse 1.5s infinite;">
-                <h2 id="loader-text" style="font-size: 18px; color: #0f172a; font-weight: 600; margin-bottom: 8px;">Cargando Zory...</h2>
-                <p id="loader-sub" style="font-size: 13px; color: #64748b;">Preparando tu experiencia</p>
+                <h2 id="loader-text" style="font-size: 18px; color: #0f172a; font-weight: 600; margin-bottom: 8px;">Cargando Zori...</h2>
+                <p id="loader-sub" style="font-size: 13px; color: #64748b;">Preparando experiencia</p>
             </div>
             <style>
                 @keyframes pulse {
