@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lo de Capi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<style>/* Estilo unificado para los botones de pedido de Lo de Capi */
+.item button, 
+.controls button, 
+.btn-pedir {
+    background-color: #ff7300 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    box-shadow: 0 2px 5px rgba(255, 115, 0, 0.3);
+    transition: background 0.2s ease;
+}
+
+/* Efecto hover opcional al pasar el mouse por encima */
+.item button:hover, 
+.controls button:hover, 
+.btn-pedir:hover {
+    background-color: #e06500 !important;
+}</style>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+
+
+        <!-- Banner del Local con el Botón Flotante Integrado -->
+        <section class="promo-banner" style="position: relative;">
+            <a href="index.html" class="back-home-btn-float">
+                <i class="fa-solid fa-store"></i> Inicio
+            </a>
+            <!-- Podes cambiar el nombre de la imagen del banner según corresponda -->
+            <img src="lo de capi web.jpeg" alt="Banner de Lo de Capi">
+        </section>
+
+        <!-- AVISO BORDE RELLENO -->
+        <div style="text-align: center; background: #e74c3c; color: white; padding: 8px; font-weight: 600; font-size: 0.85rem; margin-bottom: 15px; border-radius: 6px;">
+            COSTO ADICIONAL EN BORDE RELLENO + 10.000 Gs.
+        </div>
+
+        <!-- CATEGORÍA: PIZZAS ESPECIALES DE LA CASA -->
+        <h2 class="section-title">ESPECIAL DE LA CASA</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Mexicana</h4>
+                    <p>Salsa de tomate, queso mozzarellas, salsa de carne molida, morrón, aceituna, picante y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 65.000</b></div>
+                        <div>Extra (12p): <b>Gs. 80.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Mexicana (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Mexicana (Grande)', 65000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Mexicana (Extra)', 80000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Súper Pollo</h4>
+                    <p>Salsa de tomate, queso mozzarella, pollo, champiñón, cebolla caramelizada, panceta, rodajas de tomate y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 60.000</b></div>
+                        <div>Extra (12p): <b>Gs. 75.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Súper Pollo (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Súper Pollo (Grande)', 60000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Súper Pollo (Extra)', 75000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Súper Embutido</h4>
+                    <p>Salsa de tomate, queso mozzarella, pepperoni, calabresa, jamón, salchichas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 60.000</b></div>
+                        <div>Extra (12p): <b>Gs. 75.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Súper Embutido (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Súper Embutido (Grande)', 60000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Súper Embutido (Extra)', 75000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Hawaiana</h4>
+                    <p>Salsa de tomate, queso mozzarella, champiñón, piña, jamón, aceitunas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 60.000</b></div>
+                        <div>Extra (12p): <b>Gs. 75.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Hawaiana (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Hawaiana (Grande)', 60000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Hawaiana (Extra)', 75000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Completa</h4>
+                    <p>Salsa de tomate, queso mozzarella, palmitos, aceituna, champiñón, choclo, jamón, cebolla caramelizada, morrón y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 60.000</b></div>
+                        <div>Extra (12p): <b>Gs. 75.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Completa (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Completa (Grande)', 60000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Completa (Extra)', 75000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Fungí Panceta</h4>
+                    <p>Salsa de tomate, queso mozzarella, panceta, cebolla caramelizada, champiñón y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 60.000</b></div>
+                        <div>Extra (12p): <b>Gs. 75.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Fungí Panceta (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Fungí Panceta (Grande)', 60000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Fungí Panceta (Extra)', 75000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Lomo Cheddar</h4>
+                    <p>Salsa de tomate, queso mozzarella, queso cheddar, lomo vacuno sofrito, champiñón, aceitunas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 65.000</b></div>
+                        <div>Extra (12p): <b>Gs. 80.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Lomo Cheddar (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Lomo Cheddar (Grande)', 65000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Lomo Cheddar (Extra)', 80000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Carnívora</h4>
+                    <p>Salsa de tomate, queso mozzarella, salsa de carne molida, pepperoni, salchichas, jamón, calabresa, morrón, aceitunas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 70.000</b></div>
+                        <div>Extra (12p): <b>Gs. 85.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Carnívora (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Carnívora (Grande)', 70000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Carnívora (Extra)', 85000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Suprema</h4>
+                    <p>Salsa de tomate, queso mozzarella, salsa de carne molida, cebolla cruda, pepinillo y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 25.000</b></div>
+                        <div>Grande (8p): <b>Gs. 65.000</b></div>
+                        <div>Extra (12p): <b>Gs. 80.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Suprema (Personal)', 25000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Suprema (Grande)', 65000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Suprema (Extra)', 80000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PIZZAS TRADICIONALES Y CLÁSICAS -->
+        <h2 class="section-title">PIZZAS CLÁSICAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Napolitana</h4>
+                    <p>Salsa de tomate, queso mozzarella, jamón, rodajas de tomate y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Napolitana (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Napolitana (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Napolitana (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Anchoa & Aceitunas</h4>
+                    <p>Salsa de tomate, queso mozzarella, anchoas, aceituna y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Anchoa & Aceitunas (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Anchoa & Aceitunas (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Anchoa & Aceitunas (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Jardinera</h4>
+                    <p>Salsa de tomate, queso mozzarella, cebolla caramelizada, huevo, aceitunas, tomate en rodajas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Jardinera (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Jardinera (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Jardinera (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>5 Quesos</h4>
+                    <p>Salsa de tomate, queso mozzarella, queso roquefort, queso parmesano, queso cheddar, queso catupiry y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 55.000</b></div>
+                        <div>Extra (12p): <b>Gs. 70.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('5 Quesos (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('5 Quesos (Grande)', 55000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('5 Quesos (Extra)', 70000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Primavera</h4>
+                    <p>Salsa de tomate, queso mozzarella, pollo, arveja, champiñón, cebolla caramelizada y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Primavera (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Primavera (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Primavera (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Inglesa</h4>
+                    <p>Salsa de tomate, queso mozzarella, palmito, atún, arveja y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Inglesa (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Inglesa (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Inglesa (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Panceta</h4>
+                    <p>Salsa de tomate, queso mozzarella, panceta y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Panceta (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Panceta (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Panceta (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Mediterránea</h4>
+                    <p>Salsa de tomate, queso mozzarella, jamón crudo, tomate en rodajas y albahaca fresca.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 60.000</b></div>
+                        <div>Extra (12p): <b>Gs. 75.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Mediterránea (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Mediterránea (Grande)', 60000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Mediterránea (Extra)', 75000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Cebolla</h4>
+                    <p>Salsa de tomate, queso mozzarella, cebolla y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Cebolla (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Cebolla (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Cebolla (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Palmitos</h4>
+                    <p>Salsa de tomate, queso mozzarella, palmito y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 35.000</b></div>
+                        <div>Extra (12p): <b>Gs. 50.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Palmitos (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Palmitos (Grande)', 35000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Palmitos (Extra)', 50000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Muzzarella</h4>
+                    <p>Salsa de tomate, queso mozzarella y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 15.000</b></div>
+                        <div>Grande (8p): <b>Gs. 30.000</b></div>
+                        <div>Extra (12p): <b>Gs. 45.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Muzzarella (Personal)', 15000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Muzzarella (Grande)', 30000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Muzzarella (Extra)', 45000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Panceta Especial Capi</h4>
+                    <p>Salsa de tomate, queso mozzarella, panceta, huevo, cebolla caramelizada, tomate en rodajas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Panceta Especial Capi (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Panceta Especial Capi (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Panceta Especial Capi (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Morrón</h4>
+                    <p>Salsa de tomate, queso mozzarella, morrón y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Morrón (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Morrón (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Morrón (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Roquefort & Cebolla</h4>
+                    <p>Salsa de tomate, queso mozzarella, queso roquefort, cebolla cruda y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Roquefort & Cebolla (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Roquefort & Cebolla (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Roquefort & Cebolla (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Catupiry</h4>
+                    <p>Salsa de tomate, queso mozzarella, catupiry y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Catupiry (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Catupiry (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Catupiry (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Huevo & Panceta</h4>
+                    <p>Salsa de tomate, queso mozzarella, huevo, panceta y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Huevo & Panceta (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Huevo & Panceta (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Huevo & Panceta (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Margarita</h4>
+                    <p>Salsa de tomate, queso mozzarella, tomate en rodajas y albahaca seca.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 35.000</b></div>
+                        <div>Extra (12p): <b>Gs. 50.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Margarita (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Margarita (Grande)', 35000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Margarita (Extra)', 50000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Atún Especial</h4>
+                    <p>Salsa de tomate, queso mozzarella, atún, cebolla caramelizada, aceitunas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Atún Especial (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Atún Especial (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Atún Especial (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Jamón & Albahaca</h4>
+                    <p>Salsa de tomate, queso mozzarella, jamón, tomate en rodajas y albahaca seca.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Jamón & Albahaca (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Jamón & Albahaca (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Jamón & Albahaca (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Choclo Catupiry</h4>
+                    <p>Salsa de tomate, queso mozzarella, choclo, queso catupiry y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Choclo Catupiry (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Choclo Catupiry (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Choclo Catupiry (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Salchicheddar</h4>
+                    <p>Salsa de tomate, queso mozzarella, salchichas, morrón, queso cheddar y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Salchicheddar (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Salchicheddar (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Salchicheddar (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pepperoni</h4>
+                    <p>Salsa de tomate, queso mozzarella, pepperoni y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Pepperoni (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Pepperoni (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Pepperoni (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Calabresa & Cebolla</h4>
+                    <p>Salsa de tomate, queso mozzarella, calabresa, cebolla caramelizada y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 55.000</b></div>
+                        <div>Extra (12p): <b>Gs. 70.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Calabresa & Cebolla (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Calabresa & Cebolla (Grande)', 55000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Calabresa & Cebolla (Extra)', 70000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Margarita al Ajo</h4>
+                    <p>Salsa de tomate, queso mozzarella, ajo, tomate en rodajas y albahaca seca.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Margarita al Ajo (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Margarita al Ajo (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Margarita al Ajo (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Champiñón</h4>
+                    <p>Salsa de tomate, queso mozzarella, champiñón y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Champiñón (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Champiñón (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Champiñón (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pollo Choclo Catupiry</h4>
+                    <p>Salsa de tomate, queso mozzarella, pollo, choclo, queso catupiry y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 55.000</b></div>
+                        <div>Extra (12p): <b>Gs. 70.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Pollo Choclo Catupiry (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Pollo Choclo Catupiry (Grande)', 55000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Pollo Choclo Catupiry (Extra)', 70000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>La Diabla</h4>
+                    <p>Salsa de tomate, queso mozzarella, chorizo picante, pepinillo y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 55.000</b></div>
+                        <div>Extra (12p): <b>Gs. 70.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('La Diabla (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('La Diabla (Grande)', 55000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('La Diabla (Extra)', 70000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Cebolla & Panceta</h4>
+                    <p>Salsa de tomate, queso mozzarella, panceta, cebolla caramelizada y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Cebolla & Panceta (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Cebolla & Panceta (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Cebolla & Panceta (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Jamón Catupiry</h4>
+                    <p>Salsa de tomate, queso mozzarella, jamón, queso catupiry y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Jamón Catupiry (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Jamón Catupiry (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Jamón Catupiry (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Vegetariana</h4>
+                    <p>Salsa de tomate, queso mozzarella, choclo, morrón, cebolla caramelizada, champiñón, tomate en rodajas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Vegetariana (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Vegetariana (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Vegetariana (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Atún</h4>
+                    <p>Salsa de tomate, queso mozzarella, atún y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Atún (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Atún (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Atún (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Calabresa</h4>
+                    <p>Salsa de tomate, queso mozzarella, calabresa y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Calabresa (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Calabresa (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Calabresa (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pollo Catupiry</h4>
+                    <p>Salsa de tomate, queso mozzarella, pollo, queso catupiry y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 50.000</b></div>
+                        <div>Extra (12p): <b>Gs. 65.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Pollo Catupiry (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Pollo Catupiry (Grande)', 50000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Pollo Catupiry (Extra)', 65000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Choclo</h4>
+                    <p>Salsa de tomate, queso mozzarella, choclo y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Choclo (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Choclo (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Choclo (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Alemana</h4>
+                    <p>Salsa de tomate, queso mozzarella, salchichas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 45.000</b></div>
+                        <div>Extra (12p): <b>Gs. 60.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Alemana (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Alemana (Grande)', 45000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Alemana (Extra)', 60000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pepperoni Catupiry</h4>
+                    <p>Salsa de tomate, queso mozzarella, pepperoni, queso catupiry y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 22.000</b></div>
+                        <div>Grande (8p): <b>Gs. 55.000</b></div>
+                        <div>Extra (12p): <b>Gs. 70.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Pepperoni Catupiry (Personal)', 22000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Pepperoni Catupiry (Grande)', 55000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Pepperoni Catupiry (Extra)', 70000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Jamón</h4>
+                    <p>Salsa de tomate, queso mozzarella, jamón y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Jamón (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Jamón (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Jamón (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Aceitunas</h4>
+                    <p>Salsa de tomate, queso mozzarella, aceitunas y orégano.</p>
+                    <div style="margin: 8px 0; font-size: 0.85rem; color: #555;">
+                        <div>Personal (4p): <b>Gs. 20.000</b></div>
+                        <div>Grande (8p): <b>Gs. 40.000</b></div>
+                        <div>Extra (12p): <b>Gs. 55.000</b></div>
+                    </div>
+                    <button class="btn-pedir" onclick="updateQty('Aceitunas (Personal)', 20000, 1)">PEDIR PERSONAL</button>
+                    <button class="btn-pedir" onclick="updateQty('Aceitunas (Grande)', 40000, 1)" style="margin-top:4px; background:#333;">PEDIR GRANDE</button>
+                    <button class="btn-pedir" onclick="updateQty('Aceitunas (Extra)', 55000, 1)" style="margin-top:4px; background:#222;">PEDIR EXTRA</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: GASEOSAS Y BEBIDAS -->
+        <h2 class="section-title">GASEOSAS Y BEBIDAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Gaseosa Retornable</h4>
+                    <p>250 ml (4.000 Gs.) / 350 ml (5.000 Gs.) / 1 Litro (8.000 Gs.)</p>
+                    <span class="prod-price">Desde Gs. 4.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Gaseosa Retornable 250ml', 4000, 1)">250ml (4k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Gaseosa Retornable 350ml', 5000, 1)" style="margin-top:4px; background:#333;">350ml (5k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Gaseosa Retornable 1L', 8000, 1)" style="margin-top:4px; background:#222;">1 Litro (8k)</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Gaseosa Descartable</h4>
+                    <p>500ml (7k) | 1L (10k) | 1,5L (15k) | 2L (20k)</p>
+                    <span class="prod-price">Desde Gs. 7.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Gaseosa Descartable 500ml', 7000, 1)">500ml (7k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Gaseosa Descartable 1L', 10000, 1)" style="margin-top:4px; background:#333;">1 Litro (10k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Gaseosa Descartable 1.5L', 15000, 1)" style="margin-top:4px; background:#222;">1,5 Litros (15k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Gaseosa Descartable 2L', 20000, 1)" style="margin-top:4px; background:#111;">2 Litros (20k)</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Otros (Lata, Agua, Jugo)</h4>
+                    <p>Lata (7k) | Agua (5k) | Jugo (12k)</p>
+                    <span class="prod-price">Desde Gs. 5.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Agua', 5000, 1)">Agua (5k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Gaseosa en Lata', 7000, 1)" style="margin-top:4px; background:#333;">Lata (7k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Jugo', 12000, 1)" style="margin-top:4px; background:#222;">Jugo (12k)</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: CERVEZAS Y TRAGOS -->
+        <h2 class="section-title">CERVEZAS Y TRAGOS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Cervezas (Heineken, Amstel, etc.)</h4>
+                    <p>Heineken, Heineken Silver, Amstel, Sajonia, Sol.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Cerveza Heineken', 20000, 1)">Heineken (20k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Cerveza Heineken Silver', 20000, 1)" style="margin-top:4px; background:#333;">Heineken Silver (20k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Cerveza Amstel', 20000, 1)" style="margin-top:4px; background:#222;">Amstel (20k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Cerveza Sajonia', 20000, 1)" style="margin-top:4px; background:#111;">Sajonia (20k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Cerveza Sol', 20000, 1)" style="margin-top:4px; background:#000;">Sol (20k)</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Sangría y Fernet</h4>
+                    <p>Jarrita (15k) | Jarra (35k) | Fernet (20k)</p>
+                    <span class="prod-price">Desde Gs. 15.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Sangría Jarrita', 15000, 1)">Sangría Jarrita (15k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Sangría Jarra', 35000, 1)" style="margin-top:4px; background:#333;">Sangría Jarra (35k)</button>
+                    <button class="btn-pedir" onclick="updateQty('Fernet', 20000, 1)" style="margin-top:4px; background:#222;">Fernet (20k)</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Redes y Créditos -->
+        <div style="text-align: center; padding: 15px 0;">
+        <div class="social-icons" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 12px;">
+        <a href="https://www.facebook.com/share/19Axc55VUv/?mibextid=wwXIfr" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/595982309464" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Créditos -->
+    <div class="scalat-credits" style="font-size: 0.8rem; color: #666;">
+        Desarrollado por <code><span>Sclat tech</span></code>
+    </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<!-- SDK de Firestore (Compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+        <script src="js.js"></script>
+    </div>
+    
+</body>
+</html>

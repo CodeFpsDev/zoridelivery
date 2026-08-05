@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Restaurant Mysko</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Banner del Local con el Botón Flotante Integrado -->
+       <section class="promo-banner" style="position: relative;">
+    <a href="index.html" class="back-home-btn-float">
+        <i class="fa-solid fa-store"></i> Ver más locales
+    </a>
+    <img src="posada mysko web.png" alt="Banner del Local">
+</section>
+
+        <!-- CATEGORÍA: ALMUERZO CON GUARNICION -->
+        <h2 class="section-title">ALMUERZO CON GUARNICION</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Bife a Caballo</h4>
+                    <p>Incluye guarnición.</p>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Bife a Caballo', 45000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Milanesa de Carne</h4>
+                    <p>Incluye guarnición.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Milanesa de Carne', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Milanesa de Pollo</h4>
+                    <p>Incluye guarnición.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Milanesa de Pollo', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Milanesa a la Napolitana</h4>
+                    <p>Incluye guarnición.</p>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Milanesa a la Napolitana', 45000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Picaña a la Plancha</h4>
+                    <p>Incluye guarnición.</p>
+                    <span class="prod-price">Gs. 70.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Picaña a la Plancha', 70000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: GUARNICION -->
+        <h2 class="section-title">GUARNICION</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pure de Papa</h4>
+                    <p>Porción de puré.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pure de Papa', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Arroz con Queso</h4>
+                    <p>Porción de arroz con queso.</p>
+                    <span class="prod-price">Gs. 15.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Arroz con Queso', 15000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Arroz al Ajo</h4>
+                    <p>Porción de arroz al ajo.</p>
+                    <span class="prod-price">Gs. 15.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Arroz al Ajo', 15000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Fideo a la Manteca</h4>
+                    <p>Porción de fideos.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Fideo a la Manteca', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Papas Rústicas</h4>
+                    <p>Porción de papas rústicas.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Papas Rústicas', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: A BASE DE PESCADO -->
+        <h2 class="section-title">A BASE DE PESCADO</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Cazuela de Surubi</h4>
+                    <p>Especial a base de pescado.</p>
+                    <span class="prod-price">Gs. 60.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Cazuela de Surubi', 60000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Caldo de Pescado</h4>
+                    <p>Caldo caliente tradicional.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Caldo de Pescado', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Milanesa de Pescado</h4>
+                    <p>Milanesa elaborada con pescado.</p>
+                    <span class="prod-price">Gs. 70.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Milanesa de Pescado', 70000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Fritiño</h4>
+                    <p>Plato a base de pescado frito.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Fritiño', 40000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Romanita</h4>
+                    <p>Pescado a la romana.</p>
+                    <span class="prod-price">Gs. 60.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Romanita', 60000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: ENSALADA -->
+        <h2 class="section-title">ENSALADA</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Mixta</h4>
+                    <p>Ensalada mixta fresca.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Ensalada Mixta', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Alemana</h4>
+                    <p>Ensalada alemana.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Ensalada Alemana', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pepino</h4>
+                    <p>Ensalada de pepino.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Ensalada Pepino', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PICADA FRIA -->
+        <h2 class="section-title">PICADA FRIA</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Picada Fría (2 personas)</h4>
+                    <p>Bondiola, salamín, queso azul, pepinillo, huevo de codorniz, palmito, salame ahumado.</p>
+                    <span class="prod-price">Gs. 80.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Picada Fría 2 personas', 80000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Picada Fría (4 personas)</h4>
+                    <p>Bondiola, salamín, queso azul, pepinillo, huevo de codorniz, palmito, salame ahumado.</p>
+                    <span class="prod-price">Gs. 160.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Picada Fría 4 personas', 160000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PICADA TRADICIONAL -->
+        <h2 class="section-title">PICADA TRADICIONAL</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Picada Tradicional (2 personas)</h4>
+                    <p>Milanesa de pollo, carne, empanada surtida, mandioca frita, aceituna, jamón, queso, chorizo, croqueta.</p>
+                    <span class="prod-price">Gs. 60.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Picada Tradicional 2 personas', 60000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Picada Tradicional (4 personas)</h4>
+                    <p>Milanesa de pollo, carne, empanada surtida, mandioca frita, aceituna, jamón, queso, chorizo, croqueta.</p>
+                    <span class="prod-price">Gs. 120.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Picada Tradicional 4 personas', 120000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: PIZZA -->
+        <h2 class="section-title">PIZZA</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Mozzarella</h4>
+                    <p>Pizza clásica de mozzarella.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Mozzarella', 40000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pepperoni</h4>
+                    <p>Pizza con pepperoni.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Pepperoni', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Calabresa</h4>
+                    <p>Pizza con calabresa.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Calabresa', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Napolitana</h4>
+                    <p>Pizza napolitana.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Napolitana', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Pollo con Catupiry</h4>
+                    <p>Pizza de pollo con catupiry.</p>
+                    <span class="prod-price">Gs. 55.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Pollo con Catupiry', 55000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Choclo Catupiry</h4>
+                    <p>Pizza de choclo con catupiry.</p>
+                    <span class="prod-price">Gs. 45.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Choclo Catupiry', 45000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Fugazzeta</h4>
+                    <p>Pizza fugazzeta.</p>
+                    <span class="prod-price">Gs. 60.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Fugazzeta', 60000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: MINUTAS -->
+        <h2 class="section-title">MINUTAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Empanada de Carne</h4>
+                    <p>Empanada horneada o frita de carne.</p>
+                    <span class="prod-price">Gs. 5.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Empanada de Carne', 5000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Empanada de Pollo</h4>
+                    <p>Empanada de pollo.</p>
+                    <span class="prod-price">Gs. 5.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Empanada de Pollo', 5000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Empanada de Pescado</h4>
+                    <p>Empanada de pescado.</p>
+                    <span class="prod-price">Gs. 7.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Empanada de Pescado', 7000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Jamon y Queso</h4>
+                    <p>Empanada de jamón y queso.</p>
+                    <span class="prod-price">Gs. 5.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Empanada Jamon y Queso', 5000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Sándwich de Lomito</h4>
+                    <p>Sándwich completo de lomito.</p>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Sándwich de Lomito', 25000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Calzon de lomito (Personal)</h4>
+                    <p>Calzon de lomito con salsa tuco.</p>
+                    <span class="prod-price">Gs. 40.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Calzon de lomito personal', 40000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Calzon de lomito (2 personas)</h4>
+                    <p>Calzon de lomito con salsa tuco para compartir.</p>
+                    <span class="prod-price">Gs. 80.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Calzon de lomito 2 personas', 80000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: TRAGOS -->
+        <h2 class="section-title">TRAGOS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Caipirinha</h4>
+                    <p>Trago clásico.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Caipirinha', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Daikiri</h4>
+                    <p>Trago refrescante.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Daikiri', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Licor de chocolate</h4>
+                    <p>Trago de licor de chocolate.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Licor de chocolate', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Campari</h4>
+                    <p>Trago con Campari.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Trago Campari', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Fernet</h4>
+                    <p>Fernet preparado.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Fernet', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: POSTRE -->
+        <h2 class="section-title">POSTRE</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Dulce de batata c/ dulce de leche</h4>
+                    <p>Postre tradicional.</p>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Dulce de batata c/ dulce de leche', 10000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Dulce de durazno c/ chantilly</h4>
+                    <p>Postre de durazno con crema chantilly.</p>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Dulce de durazno c/ chantilly', 10000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Budin</h4>
+                    <p>Porción de budín.</p>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Budin', 10000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>Creps con frutas</h4>
+                    <p>Crepes acompañados de frutas.</p>
+                    <span class="prod-price">Gs. 12.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Creps con frutas', 12000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: BEBIDAS -->
+        <h2 class="section-title">BEBIDAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>AGUA 500ML</h4>
+                    <p>Agua mineral 500ml.</p>
+                    <span class="prod-price">Gs. 4.000</span>
+                    <button class="btn-pedir" onclick="updateQty('AGUA 500ML', 4000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>SCHWEPPES 500ML</h4>
+                    <p>Schweppes 500ml.</p>
+                    <span class="prod-price">Gs. 8.000</span>
+                    <button class="btn-pedir" onclick="updateQty('SCHWEPPES 500ML', 8000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>COCA COLA 250ML</h4>
+                    <p>Coca Cola 250ml.</p>
+                    <span class="prod-price">Gs. 4.000</span>
+                    <button class="btn-pedir" onclick="updateQty('COCA COLA 250ML', 4000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>COCA COLA ZERO 250ML</h4>
+                    <p>Coca Cola Zero 250ml.</p>
+                    <span class="prod-price">Gs. 4.000</span>
+                    <button class="btn-pedir" onclick="updateQty('COCA COLA ZERO 250ML', 4000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>PEPSI COLA 250ML</h4>
+                    <p>Pepsi Cola 250ml.</p>
+                    <span class="prod-price">Gs. 4.000</span>
+                    <button class="btn-pedir" onclick="updateQty('PEPSI COLA 250ML', 4000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>COCA COLA 1LT</h4>
+                    <p>Coca Cola 1 Litro.</p>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <button class="btn-pedir" onclick="updateQty('COCA COLA 1LT', 10000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>FANTA 1LT</h4>
+                    <p>Fanta 1 Litro.</p>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <button class="btn-pedir" onclick="updateQty('FANTA 1LT', 10000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>SPRITE 1LT</h4>
+                    <p>Sprite 1 Litro.</p>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <button class="btn-pedir" onclick="updateQty('SPRITE 1LT', 10000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>PEPSI COLA 1LT</h4>
+                    <p>Pepsi Cola 1 Litro.</p>
+                    <span class="prod-price">Gs. 10.000</span>
+                    <button class="btn-pedir" onclick="updateQty('PEPSI COLA 1LT', 10000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>AGUA 2LT</h4>
+                    <p>Agua mineral 2 Litros.</p>
+                    <span class="prod-price">Gs. 8.000</span>
+                    <button class="btn-pedir" onclick="updateQty('AGUA 2LT', 8000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>PURO SOL 200ML</h4>
+                    <p>Jugo Puro Sol 200ml.</p>
+                    <span class="prod-price">Gs. 5.000</span>
+                    <button class="btn-pedir" onclick="updateQty('PURO SOL 200ML', 5000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>PURO SOL 1LT</h4>
+                    <p>Jugo Puro Sol 1 Litro.</p>
+                    <span class="prod-price">Gs. 12.000</span>
+                    <button class="btn-pedir" onclick="updateQty('PURO SOL 1LT', 12000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>PULP 2LT</h4>
+                    <p>Pulp 2 Litros.</p>
+                    <span class="prod-price">Gs. 15.000</span>
+                    <button class="btn-pedir" onclick="updateQty('PULP 2LT', 15000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>PASO DE LOS TOROS 250ML</h4>
+                    <p>Paso de los Toros 250ml.</p>
+                    <span class="prod-price">Gs. 4.000</span>
+                    <button class="btn-pedir" onclick="updateQty('PASO DE LOS TOROS 250ML', 4000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>GATORADE COOL BLUE</h4>
+                    <p>Bebida isotónica Gatorade.</p>
+                    <span class="prod-price">Gs. 15.000</span>
+                    <button class="btn-pedir" onclick="updateQty('GATORADE COOL BLUE', 15000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>HEINEKEN 650ML</h4>
+                    <p>Cerveza Heineken 650ml.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('HEINEKEN 650ML', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>BUDWEISER 750ML</h4>
+                    <p>Cerveza Budweiser 750ml.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('BUDWEISER 750ML', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>CORONA 650ML</h4>
+                    <p>Cerveza Corona 650ml.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('CORONA 650ML', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>SKOL 1LT</h4>
+                    <p>Cerveza Skol 1 Litro.</p>
+                    <span class="prod-price">Gs. 12.000</span>
+                    <button class="btn-pedir" onclick="updateQty('SKOL 1LT', 12000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>PATAGONIA 1LT</h4>
+                    <p>Cerveza Patagonia 1 Litro.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('PATAGONIA 1LT', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>RED BULL LATA 250ML</h4>
+                    <p>Bebida energizante Red Bull.</p>
+                    <span class="prod-price">Gs. 16.000</span>
+                    <button class="btn-pedir" onclick="updateQty('RED BULL LATA 250ML', 16000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>AMSTEL LATA 269ML</h4>
+                    <p>Cerveza Amstel lata.</p>
+                    <span class="prod-price">Gs. 8.000</span>
+                    <button class="btn-pedir" onclick="updateQty('AMSTEL LATA 269ML', 8000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>CAMPARI 750ML</h4>
+                    <p>Botella Campari 750ml.</p>
+                    <span class="prod-price">Gs. 120.000</span>
+                    <button class="btn-pedir" onclick="updateQty('CAMPARI 750ML', 120000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>VINOS</h4>
+                    <p>Vino de la casa.</p>
+                    <span class="prod-price">Gs. 120.000</span>
+                    <button class="btn-pedir" onclick="updateQty('VINOS', 120000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>HIELO EN CUBITO</h4>
+                    <p>Bolsa de hielo en cubito.</p>
+                    <span class="prod-price">Gs. 8.000</span>
+                    <button class="btn-pedir" onclick="updateQty('HIELO EN CUBITO', 8000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <h4>CARBON</h4>
+                    <p>Bolsa de carbón.</p>
+                    <span class="prod-price">Gs. 12.000</span>
+                    <button class="btn-pedir" onclick="updateQty('CARBON', 12000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <div style="text-align: center; padding: 15px 0;">
+            <!-- Redes Sociales / Contacto -->
+         <div class="social-icons" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 12px;">
+        <a href="https://www.facebook.com/share/19Axc55VUv/?mibextid=wwXIfr" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/595982309464" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Créditos -->
+    <div class="scalat-credits" style="font-size: 0.8rem; color: #666;">
+        Desarrollado por <code><span>Sclat tech</span></code>
+    </div>
+</div>
+        </div>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<!-- SDK de Firestore (Compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+        <script src="js.js"></script>
+
+    </div>
+</body>
+</html>
