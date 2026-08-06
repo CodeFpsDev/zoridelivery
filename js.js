@@ -398,8 +398,6 @@ function sendWhatsApp() {
 
     message += `\nTotal: Gs. ${totalPrice.toLocaleString('es-PY')}\n\n`;
     message += `A nombre de: ${nombreCliente}\n`;
-    
-
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${store.whatsapp}?text=${encodedMessage}`, '_blank');
 }
