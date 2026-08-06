@@ -390,7 +390,7 @@ function sendWhatsApp() {
 
     // Armar mensaje de WhatsApp
     let message = `Nuevo Pedido\n\n`;
-    message += `Hola Zory, quiero hacer un pedido de *${store.nombre}*:\n\n`;
+    message += `Hola Zori, quiero hacer un pedido de *${store.nombre}*:\n\n`;
     
     productosArray.forEach(p => {
         message += `- ${p.cantidad}: ${p.nombre}\n`;
