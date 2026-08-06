@@ -398,7 +398,7 @@ function sendWhatsApp() {
 
     message += `\nTotal: Gs. ${totalPrice.toLocaleString('es-PY')}\n\n`;
     message += `A nombre de: ${nombreCliente}\n`;
-    message += `(te mando mi ubicación en tiempo real)`;
+    
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${store.whatsapp}?text=${encodedMessage}`, '_blank');
