@@ -116,10 +116,11 @@ const database = {
             { id: "capi2", nombre: "Lomito Lo De Capi", descripcion: "Lomito completo con pan casero y papas fritas.", precio: 40000, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" }
         ]
     }
-}; // <- Único cierre correcto
+};
 
 let cart = {};
 
+// CONFIGURACIÓN DE FIREBASE (Protegida contra inicialización duplicada)
 const firebaseConfig = {
     apiKey: "AIzaSyCoIVVXK3csLvtg9E7wDCjGt--fam_szzQ",
     authDomain: "admin-de-zory.firebaseapp.com",
@@ -537,13 +538,4 @@ async function enviarResenaEmail(event) {
         boton.innerText = "✉️ Enviar Reseña Anónima";
         boton.disabled = false;
     }
-}if (typeof firebase !== 'undefined' && !firebase.apps.length) {
-    try {
-        firebase.initializeApp(firebaseConfig);
-    } catch (e) { console.error(e); }
 }
-
-const db = (typeof firebase !== 'undefined' && firebase.firestore) ? firebase.firestore() : null;
-
-// <- ASEGÚRATE DE QUE ESTO ESTÉ ACTIVO PARA QUE ENVIE DATOS AL MAPA:
-const analytics = (typeof firebase !== 'undefined' && firebase.analytics) ? firebase.analytics() : null;
