@@ -537,4 +537,13 @@ async function enviarResenaEmail(event) {
         boton.innerText = "✉️ Enviar Reseña Anónima";
         boton.disabled = false;
     }
+}if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+    try {
+        firebase.initializeApp(firebaseConfig);
+    } catch (e) { console.error(e); }
 }
+
+const db = (typeof firebase !== 'undefined' && firebase.firestore) ? firebase.firestore() : null;
+
+// <- ASEGÚRATE DE QUE ESTO ESTÉ ACTIVO PARA QUE ENVIE DATOS AL MAPA:
+const analytics = (typeof firebase !== 'undefined' && firebase.analytics) ? firebase.analytics() : null;
