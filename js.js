@@ -118,10 +118,9 @@ const database = {
     }
 };
 
-
 let cart = {};
 
-// CONFIGURACIÓN DE FIREBASE (Asegúrate de incluir los SDKs compat en tu HTML principal)
+// CONFIGURACIÓN DE FIREBASE (Protegida contra inicialización duplicada)
 const firebaseConfig = {
     apiKey: "AIzaSyCoIVVXK3csLvtg9E7wDCjGt--fam_szzQ",
     authDomain: "admin-de-zory.firebaseapp.com",
@@ -132,12 +131,12 @@ const firebaseConfig = {
     measurementId: "G-WKGL0G4WK4"
 };
 
-// Inicializar base de datos de Firebase si está cargado el SDK
-if (typeof firebase !== 'undefined') {
+if (typeof firebase !== 'undefined' && !firebase.apps.length) {
     try {
         firebase.initializeApp(firebaseConfig);
     } catch (e) { console.error(e); }
 }
+
 const db = (typeof firebase !== 'undefined' && firebase.firestore) ? firebase.firestore() : null;
 
 function obtenerStoreActual() {
@@ -370,7 +369,6 @@ function sendWhatsApp() {
         });
     }
 
-    // Guardar pedido automáticamente en Firebase Firestore para el panel de administración
     if (db) {
         db.collection("pedidos").add({
             cliente: nombreCliente,
@@ -388,7 +386,6 @@ function sendWhatsApp() {
         });
     }
 
-    // Armar mensaje de WhatsApp
     let message = `Nuevo Pedido\n\n`;
     message += `Hola Zory, quiero hacer un pedido de *${store.nombre}*:\n\n`;
     
@@ -542,6 +539,3 @@ async function enviarResenaEmail(event) {
         boton.disabled = false;
     }
 }
-document.addEventListener('DOMContentLoaded', () => {
-    initStore();
-});
