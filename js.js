@@ -542,3 +542,6 @@ async function enviarResenaEmail(event) {
         boton.disabled = false;
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    initStore();
+});
