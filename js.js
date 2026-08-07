@@ -116,11 +116,10 @@ const database = {
             { id: "capi2", nombre: "Lomito Lo De Capi", descripcion: "Lomito completo con pan casero y papas fritas.", precio: 40000, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" }
         ]
     }
-};
+}; // <- Único cierre correcto
 
 let cart = {};
 
-// CONFIGURACIÓN DE FIREBASE (Protegida contra inicialización duplicada)
 const firebaseConfig = {
     apiKey: "AIzaSyCoIVVXK3csLvtg9E7wDCjGt--fam_szzQ",
     authDomain: "admin-de-zory.firebaseapp.com",
