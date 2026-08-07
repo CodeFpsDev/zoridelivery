@@ -519,10 +519,13 @@
         </section>
 
         <!-- Footer Minimalista -->
-        <footer class="social-footer">
-   <div style="text-align: center; padding: 15px 0;">
+       <footer class="social-footer">
+<div style="text-align: center; padding: 15px 0;">
     <!-- Redes Sociales (Iconos limpios) -->
-    <div class="social-icons" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 12px;">
+ <div class="social-icons" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 12px;">
+        <a href="https://www.facebook.com/share/19Axc55VUv/?mibextid=wwXIfr" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
         <a href="https://www.instagram.com/zoridelivery?igsh=MXFobTh4amJndnNyeQ%3D%3D&utm_source=qr" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
             <i class="fa-brands fa-instagram"></i>
         </a>
@@ -536,10 +539,14 @@
         Desarrollado por <code><span>Sclat tech</span></code>
     </div>
 </div>
-    </div>
 </footer>
-    </div>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 
+<!-- 2. SDK de Firebase Analytics -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+
+<!-- 3. SDK de Firestore (para los pedidos) -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <!-- Script de control local y de botones -->
     <script>
         function agregarProducto(nombreProducto, precio, id) {
