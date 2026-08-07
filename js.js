@@ -120,6 +120,8 @@ const database = {
 
 let cart = {};
 
+// --- COMIENZO DEL ARCHIVO JS.JS ---
+
 const firebaseConfig = {
     apiKey: "AIzaSyCoIVVXK3csLvtg9E7wDCjGt--fam_szzQ",
     authDomain: "admin-de-zory.firebaseapp.com",
@@ -130,13 +132,19 @@ const firebaseConfig = {
     measurementId: "G-WKGL0G4WK4"
 };
 
+// Inicialización compatible con los scripts del HTML
 if (typeof firebase !== 'undefined' && !firebase.apps.length) {
     try {
         firebase.initializeApp(firebaseConfig);
-    } catch (e) { console.error(e); }
+        firebase.analytics(); // Esto es lo que activa el mapa en tiempo real
+    } catch (e) { 
+        console.error(e); 
+    }
 }
 
 const db = (typeof firebase !== 'undefined' && firebase.firestore) ? firebase.firestore() : null;
+
+// ... (y debajo de esto, deja todo el resto de funciones que ya tenías: obtenerStoreActual, initStore, etc.)
 
 function obtenerStoreActual() {
     let tituloPage = document.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
