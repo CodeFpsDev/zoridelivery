@@ -48,7 +48,12 @@ const database = {
         banner: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
         whatsapp: "595982309464",
         productos: [
-            { id: "hb1", nombre: "Home Classic", descripcion: "Carne casera, queso mozzarella, lechuga y tomate.", precio: 26000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" }
+            { id: "hb1", nombre: "Kids", descripcion: "Pan, carne, queso y salsa.", precio: 13000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
+            { id: "hb2", nombre: "Classic", descripcion: "Pan, carne, huevo, lechuga, tomate y salsa.", precio: 15000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
+            { id: "hb3", nombre: "Classic Max", descripcion: "Pan, medallón de carne, queso, tomate, lechuga, huevo y salsa.", precio: 17000, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" },
+            { id: "hb4", nombre: "Classic de Pollo", descripcion: "Pan, carne de pollo, huevo, queso mozzarella, lechuga, tomate y salsa.", precio: 15000, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" },
+            { id: "hb5", nombre: "Doble Classic", descripcion: "Pan, doble carne, queso, tomate, lechuga, huevo y salsa.", precio: 20000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
+            { id: "hb6", nombre: "Barbacoa", descripcion: "Pan, medallón de carne, queso, huevo, tomate, pepinillo y salsa barbacoa.", precio: 18000, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" }
         ]
     },
     "valhalla": {
@@ -114,6 +119,27 @@ const database = {
         productos: [
             { id: "capi1", nombre: "Especial Lo De Capi", descripcion: "Plato o hamburguesa destacada de la casa.", precio: 35000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
             { id: "capi2", nombre: "Lomito Lo De Capi", descripcion: "Lomito completo con pan casero y papas fritas.", precio: 40000, img: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200" }
+        ]
+    },
+    "milu": {
+        nombre: "Hamburguesería Milu",
+        banner: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "milu1", nombre: "Hamburguesa", descripcion: "Hamburguesa clásica de la casa.", precio: 15000, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
+            { id: "milu2", nombre: "Hamburguesa doble", descripcion: "Doble porción de carne y sabor.", precio: 25000, img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=200" },
+            { id: "milu3", nombre: "Sandwich", descripcion: "Sandwich especial con ingredientes frescos.", precio: 20000, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=200" },
+            { id: "milu4", nombre: "Doble", descripcion: "Opción doble especial.", precio: 30000, img: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=200" },
+            { id: "milu5", nombre: "Arabe", descripcion: "Sándwich estilo árabe.", precio: 25000, img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=200" },
+            { id: "milu6", nombre: "Solo carne", descripcion: "Porción especial de carne.", precio: 35000, img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=200" }
+        ]
+    },
+    "amandau": {
+        nombre: "Amandau",
+        banner: "https://images.unsplash.com/photo-1560008511-11c63416e52d?w=600",
+        whatsapp: "595982309464",
+        productos: [
+            { id: "amandau1", nombre: "Vasito Chico", descripcion: "Helado artesanal en vasito de una porción.", precio: 12000, img: "https://images.unsplash.com/photo-1560008511-11c63416e52d?w=200" }
         ]
     }
 }; // <- Único cierre correcto
