@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hamburguesería Milu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container"></div>
+        </header>
+
+        <!-- Banner del Local con el Botón Flotante Integrado -->
+        <section class="promo-banner" style="position: relative;">
+            <a href="index.html" class="back-home-btn-float">
+                <i class="fa-solid fa-store"></i> Ver más locales
+            </a>
+            <!-- Asegúrate de colocar el nombre correcto de la imagen de tu banner -->
+            <img src="logo milu-8.png" alt="Banner de Hamburguesería Milu">
+        </section>
+
+        <!-- CATEGORÍA: HAMBURGUESAS Y SÁNDWICHES -->
+        <h2 class="section-title">HAMBURGUESAS Y SÁNDWICHES</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Hamburguesa">
+                <div class="prod-info">
+                    <h4>Hamburguesa</h4>
+                    <p>Hamburguesa clásica de la casa.</p>
+                    <span class="prod-price">Gs. 15.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Hamburguesa', 15000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=200" alt="Hamburguesa doble">
+                <div class="prod-info">
+                    <h4>Hamburguesa doble</h4>
+                    <p>Doble porción de carne y sabor.</p>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Hamburguesa doble', 25000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=200" alt="Sandwich">
+                <div class="prod-info">
+                    <h4>Sandwich</h4>
+                    <p>Sandwich especial con ingredientes frescos.</p>
+                    <span class="prod-price">Gs. 20.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Sandwich', 20000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=200" alt="Doble">
+                <div class="prod-info">
+                    <h4>Doble</h4>
+                    <p>Opción doble especial.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Doble', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=200" alt="Arabe">
+                <div class="prod-info">
+                    <h4>Arabe</h4>
+                    <p>Sándwich estilo árabe.</p>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Arabe', 25000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200" alt="Solo carne">
+                <div class="prod-info">
+                    <h4>Solo carne</h4>
+                    <p>Porción especial de carne.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Solo carne', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Pie de página con redes y créditos -->
+        <div style="text-align: center; padding: 15px 0;">
+            <!-- Redes Sociales (Iconos limpios) -->
+            <div class="social-icons" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 12px;">
+                <a href="https://www.facebook.com" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/595982309464" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <!-- Créditos -->
+            <div class="scalat-credits" style="font-size: 0.8rem; color: #666;">
+                Desarrollado por <code><span>Sclat tech</span></code>
+            </div>
+        </div>
+
+        <!-- SDK de Firebase App (Compat) -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+        <!-- SDK de Firebase Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+        <!-- SDK de Firestore (para los pedidos) -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+        <!-- Tu archivo de lógica principal -->
+        <script src="js.js"></script>
+    </div>
+</body>
+</html>
