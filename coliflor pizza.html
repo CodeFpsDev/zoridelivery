@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gastronomía Mainumby</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container"></div>
+        </header>
+
+        <!-- Banner del Local con el Botón Flotante Integrado -->
+        <section class="promo-banner" style="position: relative;">
+            <a href="index.html" class="back-home-btn-float">
+                <i class="fa-solid fa-store"></i> Ver más locales
+            </a>
+            <!-- Asegúrate de colocar la imagen correspondiente del banner -->
+            <img src="gatronomia manumby.png" alt="Banner de Gastronomía Mainumby">
+        </section>
+
+        <!-- CATEGORÍA: PIZZAS -->
+        <h2 class="section-title">NUESTRAS PIZZAS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Muzzarella">
+                <div class="prod-info">
+                    <h4>Pizza Muzzarella</h4>
+                    <p>Clásica, con abundante muzzarella y salsa de la casa.</p>
+                    <span class="prod-price">Gs. 30.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Muzzarella', 30000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Jamón">
+                <div class="prod-info">
+                    <h4>Pizza Jamón</h4>
+                    <p>Muzzarella y finas fetas de jamón.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Jamón', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200" alt="Peperoni">
+                <div class="prod-info">
+                    <h4>Pizza Peperoni</h4>
+                    <p>Muzzarella con rodajas de peperoni.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Peperoni', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=200" alt="Palmito">
+                <div class="prod-info">
+                    <h4>Pizza Palmito</h4>
+                    <p>Muzzarella y tiernos palmitos seleccionados.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Palmito', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" alt="Choclo">
+                <div class="prod-info">
+                    <h4>Pizza Choclo</h4>
+                    <p>Muzzarella y granos de choclo tierno.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Choclo', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=200" alt="Mixto">
+                <div class="prod-info">
+                    <h4>Pizza Mixto</h4>
+                    <p>Combinación especial de la casa.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Mixto', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" alt="Catupiri">
+                <div class="prod-info">
+                    <h4>Pizza Catupiri</h4>
+                    <p>Exquisita capa de queso catupiri.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Catupiri', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1595731343162-8114674724b0?w=200" alt="Primavera">
+                <div class="prod-info">
+                    <h4>Pizza Primavera</h4>
+                    <p>Con ingredientes frescos y coloridos.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Primavera', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" alt="Napolitana">
+                <div class="prod-info">
+                    <h4>Pizza Napolitana</h4>
+                    <p>Muzzarella, rodajas de tomate fresco y ajos tiernos.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pizza Napolitana', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" alt="Carne Catupiri">
+                <div class="prod-info">
+                    <h4>Carne Catupiri</h4>
+                    <p>Carne seleccionada y cremoso catupiri.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Carne Catupiri', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?w=200" alt="Pollo Catupiri">
+                <div class="prod-info">
+                    <h4>Pollo Catupiri</h4>
+                    <p>Trocitos de pollo jugoso con catupiri.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Pollo Catupiri', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200" alt="Peperoni Muzzarella">
+                <div class="prod-info">
+                    <h4>Peperoni - Muzzarella</h4>
+                    <p>Doble intensidad de muzzarella y peperoni.</p>
+                    <span class="prod-price">Gs. 35.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Peperoni - Muzzarella', 35000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Pie de página con redes y créditos -->
+        <div style="text-align: center; padding: 15px 0;">
+            <!-- Redes Sociales (Iconos limpios) -->
+            <div class="social-icons" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 12px;">
+                <a href="https://www.facebook.com" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/595983488641" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <!-- Créditos -->
+            <div class="scalat-credits" style="font-size: 0.8rem; color: #666;">
+                Desarrollado por <code><span>Sclat tech</span></code>
+            </div>
+        </div>
+
+        <!-- SDK de Firebase App (Compat) -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+        <!-- SDK de Firebase Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+        <!-- SDK de Firestore (para los pedidos) -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+        <!-- Tu archivo de lógica principal -->
+        <script src="js.js"></script>
+    </div>
+</body>
+</html>

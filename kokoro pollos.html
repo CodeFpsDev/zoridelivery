@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pollos Kokoro'o</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header con botón Volver -->
+        <header class="main-header" style="position: relative;">
+            <button onclick="window.location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="logo-container"></div>
+        </header>
+
+        <!-- Banner del Local con el Botón Flotante Integrado -->
+        <section class="promo-banner" style="position: relative;">
+            <a href="index.html" class="back-home-btn-float">
+                <i class="fa-solid fa-store"></i> Ver más locales
+            </a>
+            <!-- Asegúrate de colocar la imagen correspondiente del banner -->
+            <img src="kokoro logo.jpeg" alt="Banner de Pollos Kokoro'o">
+        </section>
+
+        <!-- CATEGORÍA: ALITAS -->
+        <h2 class="section-title">ALITAS (Incluye mandioca frita y 1 salsa)</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="alitas kokoro.jpeg" alt="Alitas x5">
+                <div class="prod-info">
+                    <h4>Alitas x 5</h4>
+                    <p>Incluye mandioca frita y una salsa a elección (Ajo, Verdeo o Golf).</p>
+                    <span class="prod-price">Gs. 25.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Alitas x 5', 25000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="alitas kokoro.jpeg" alt="Alitas x7">
+                <div class="prod-info">
+                    <h4>Alitas x 7</h4>
+                    <p>Incluye mandioca frita y una salsa a elección (Ajo, Verdeo o Golf).</p>
+                    <span class="prod-price">Gs. 37.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Alitas x 7', 37000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="alitas kokoro.jpeg" alt="Alitas x10">
+                <div class="prod-info">
+                    <h4>Alitas x 10</h4>
+                    <p>Incluye mandioca frita y una salsa a elección (Ajo, Verdeo o Golf).</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Alitas x 10', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: CHICKEN TENDERS -->
+        <h2 class="section-title">CHICKEN TENDERS</h2>
+        <section class="products-grid">
+            
+            <div class="product-card">
+                <img src="chiken kokoro.jpeg" alt="Tenders x7">
+                <div class="prod-info">
+                    <h4>Chicken Tenders x 7</h4>
+                    <p>Incluye mandioca frita y una salsa a elección.</p>
+                    <span class="prod-price">Gs. 28.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Chicken Tenders x 7', 28000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="chiken kokoro.jpeg" alt="Tenders x15">
+                <div class="prod-info">
+                    <h4>Chicken Tenders x 15</h4>
+                    <p>Incluye mandioca frita y una salsa a elección.</p>
+                    <span class="prod-price">Gs. 50.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Chicken Tenders x 15', 50000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="chiken kokoro.jpeg" alt="Tenders x22">
+                <div class="prod-info">
+                    <h4>Chicken Tenders x 22</h4>
+                    <p>Incluye mandioca frita y una salsa a elección.</p>
+                    <span class="prod-price">Gs. 75.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Chicken Tenders x 22', 75000, 1)">PEDIR</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORÍA: SALSAS ADICIONALES -->
+        <h2 class="section-title">ADICIONALES</h2>
+        <section class="products-grid">
+            <div class="product-card">
+                <img src="ajo kokoro.jpeg" alt="Salsa Adicional">
+                <div class="prod-info">
+                    <h4>Salsa Adicional</h4>
+                    <p>Elige entre Ajo, Verdeo o Golf.</p>
+                    <span class="prod-price">Gs. 2.000</span>
+                    <button class="btn-pedir" onclick="updateQty('Salsa Adicional', 2000, 1)">PEDIR</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pie de página con redes y créditos -->
+        <div style="text-align: center; padding: 15px 0;">
+            <div class="social-icons" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 12px;">
+                <a href="https://www.facebook.com" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/595982309464" target="_blank" style="color: #333333; font-size: 24px; text-decoration: none;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <div class="scalat-credits" style="font-size: 0.8rem; color: #666;">
+                Desarrollado por <code><span>Sclat tech</span></code>
+            </div>
+        </div>
+
+        <!-- SDK de Firebase App (Compat) -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+        <!-- SDK de Firebase Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+        <!-- SDK de Firestore (para los pedidos) -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+        <!-- Tu archivo de lógica principal -->
+        <script src="js.js"></script>
+    </div>
+</body>
+</html>
