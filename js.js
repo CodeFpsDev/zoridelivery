@@ -43,6 +43,25 @@ const database = {
             { id: "abs1", nombre: "Pizza Mozzarella", descripcion: "Salsa casera, abundante mozzarella y orégano.", precio: 40000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" }
         ]
     },
+    "mainumby": {
+        nombre: "Gastronomía Mainumby",
+        banner: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600",
+        whatsapp: "595983488641",
+        productos: [
+            { id: "mai1", nombre: "Pizza Muzzarella", descripcion: "Clásica, con abundante muzzarella y salsa de la casa.", precio: 30000, img: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" },
+            { id: "mai2", nombre: "Pizza Jamón", descripcion: "Muzzarella y finas fetas de jamón.", precio: 35000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" },
+            { id: "mai3", nombre: "Pizza Peperoni", descripcion: "Muzzarella con rodajas de peperoni.", precio: 35000, img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200" },
+            { id: "mai4", nombre: "Pizza Palmito", descripcion: "Muzzarella y tiernos palmitos seleccionados.", precio: 35000, img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=200" },
+            { id: "mai5", nombre: "Pizza Choclo", descripcion: "Muzzarella y granos de choclo tierno.", precio: 35000, img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" },
+            { id: "mai6", nombre: "Pizza Mixto", descripcion: "Combinación especial de la casa.", precio: 35000, img: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=200" },
+            { id: "mai7", nombre: "Pizza Catupiri", descripcion: "Exquisita capa de queso catupiri.", precio: 35000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" },
+            { id: "mai8", nombre: "Pizza Primavera", descripcion: "Con ingredientes frescos y coloridos.", precio: 35000, img: "https://images.unsplash.com/photo-1595731343162-8114674724b0?w=200" },
+            { id: "mai9", nombre: "Pizza Napolitana", descripcion: "Muzzarella, rodajas de tomate fresco y ajos tiernos.", precio: 35000, img: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=200" },
+            { id: "mai10", nombre: "Carne Catupiri", descripcion: "Carne seleccionada y cremoso catupiri.", precio: 35000, img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200" },
+            { id: "mai11", nombre: "Pollo Catupiri", descripcion: "Trocitos de pollo jugoso con catupiri.", precio: 35000, img: "https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?w=200" },
+            { id: "mai12", nombre: "Peperoni - Muzzarella", descripcion: "Doble intensidad de muzzarella y peperoni.", precio: 35000, img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200" }
+        ]
+    },
     "home of burger": {
         nombre: "Home Of Burger",
         banner: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
